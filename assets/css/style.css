@@ -26,3 +26,111 @@ h1,h2,h3,h4,h5{
     font-family: 'Playfair Display', serif;
     color: var(--primary);
 }
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+.navbar-brand i {
+    color: var(--secondary);
+    margin-right: 8px;
+}
+
+.nav-link {
+    color: var(--text);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary);
+}
+
+
+/* ===========================
+   BOTÕES
+=========================== */
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    border-radius: 30px;
+    padding: 10px 25px;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+    border-radius: 30px;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+
+/* ===========================
+   HERO
+=========================== */
+
+section.container.py-5 h1 {
+    line-height: 1.2;
+    font-size: 3.5rem;
+}
+
+.lead {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+
+/* ===========================
+   CARDS
+=========================== */
+
+.card {
+    border: none;
+    border-radius: var(--radius);
+    background-color: var(--white);
+    box-shadow: 0 10px 25px var(--shadow);
+    transition: var(--transition);
+}
+
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+
+.card i {
+    color: var(--secondary);
+}
+
+
+.card h4 {
+    color: var(--primary);
+}
+
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer {
+    color: var(--text-light);
+}
