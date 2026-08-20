@@ -1,0 +1,9 @@
+services:
+
+  bsync:
+    build: .
+    container_name: bsync
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
