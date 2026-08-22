@@ -1,288 +1,303 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>B-Sync | Reservas</title>
 
-
-    <!-- Google Fonts -->
-
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-
     <!-- Bootstrap -->
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Bootstrap Icons -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-
     <!-- CSS -->
-
     <link rel="stylesheet" href="../assets/css/style.css">
-
-
+    <link rel="stylesheet" href="../assets/css/usuario.css">
 </head>
 
+<body class="user-page">
 
-<body>
+    <!-- NAVBAR -->
 
+    <nav class="navbar navbar-expand-lg user-navbar">
 
-<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+        <div class="container">
 
-    <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/img/logo.png" alt="B-Sync">
+            </a>
 
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu">
 
-        <a class="navbar-brand fw-bold" href="dashboard.html">
+                <span class="navbar-toggler-icon"></span>
 
-            <i class="bi bi-book-half"></i>
+            </button>
 
-            B-Sync
+            <div class="collapse navbar-collapse" id="menu">
 
-        </a>
+                <ul class="navbar-nav ms-auto align-items-lg-center">
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            Início
+                        </a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link active" href="reservas.html">
+                            Reservas
+                        </a>
+                    </li>
 
-        <button class="navbar-toggler" type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pedidos.html">
+                            Pedidos
+                        </a>
+                    </li>
 
-            <span class="navbar-toggler-icon"></span>
+                    <li class="nav-item">
+                        <a class="nav-link" href="perfil.html">
+                            Perfil
+                        </a>
+                    </li>
 
-        </button>
+                    <li class="nav-item ms-lg-3">
+                        <a href="login.html" class="btn btn-primary">
+                            Sair
+                        </a>
+                    </li>
 
+                </ul>
 
-
-        <div class="collapse navbar-collapse" id="menu">
-
-
-            <ul class="navbar-nav ms-auto align-items-lg-center">
-
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="dashboard.html">
-
-                        Dashboard
-
-                    </a>
-
-                </li>
-
-
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="perfil.html">
-
-                        Perfil
-
-                    </a>
-
-                </li>
-
-
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="pedidos.html">
-
-                        Pedidos
-
-                    </a>
-
-                </li>
-
-
-
-                <li class="nav-item ms-lg-3">
-
-                    <a href="login.html" class="btn btn-outline-primary">
-
-                        Sair
-
-                    </a>
-
-                </li>
-
-
-            </ul>
-
+            </div>
 
         </div>
 
-
-    </div>
-
-</nav>
+    </nav>
 
 
+    <!-- CONTEÚDO -->
 
+    <main class="user-content">
 
-<main class="container py-5">
+        <div class="container">
 
+            <!-- TÍTULO -->
 
-    <h1 class="mb-5">
+            <div class="user-title">
 
-        Minhas Reservas
+                <span>MINHAS RESERVAS</span>
 
-    </h1>
-
-
-
-    <div class="row g-4">
-
-
-
-        <div class="col-md-6">
-
-
-            <div class="card p-4">
-
-
-                <div class="d-flex align-items-center gap-3">
-
-
-                    <i class="bi bi-book display-5"></i>
-
-
-                    <div>
-
-
-                        <h4>
-
-                            O Pequeno Príncipe
-
-                        </h4>
-
-
-                        <p class="mb-1 text-muted">
-
-                            Antoine de Saint-Exupéry
-
-                        </p>
-
-
-                        <span class="badge bg-success">
-
-                            Reservado
-
-                        </span>
-
-
-                    </div>
-
-
-                </div>
-
-
-                <hr>
-
+                <h1>
+                    Livros reservados
+                </h1>
 
                 <p>
-
-                    Data da reserva:
-                    <strong>06/08/2026</strong>
-
+                    Acompanhe suas reservas e consulte o status de cada livro.
                 </p>
-
 
             </div>
 
 
-        </div>
+            <!-- RESUMO -->
 
+            <div class="row g-4 mb-4">
 
+                <div class="col-md-4">
 
+                    <div class="user-card">
 
+                        <div class="user-icon">
+                            <i class="bi bi-bookmark"></i>
+                        </div>
 
-        <div class="col-md-6">
+                        <h3>
+                            Reservas ativas
+                        </h3>
 
-
-            <div class="card p-4">
-
-
-                <div class="d-flex align-items-center gap-3">
-
-
-                    <i class="bi bi-book display-5"></i>
-
-
-                    <div>
-
-
-                        <h4>
-
-                            Dom Casmurro
-
-                        </h4>
-
-
-                        <p class="mb-1 text-muted">
-
-                            Machado de Assis
-
+                        <p>
+                            2 reservas em andamento.
                         </p>
 
+                    </div>
 
-                        <span class="badge bg-warning text-dark">
+                </div>
 
+
+                <div class="col-md-4">
+
+                    <div class="user-card">
+
+                        <div class="user-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+
+                        <h3>
                             Aguardando
+                        </h3>
 
-                        </span>
-
+                        <p>
+                            1 reserva aguardando disponibilidade.
+                        </p>
 
                     </div>
-
 
                 </div>
 
 
-                <hr>
+                <div class="col-md-4">
 
+                    <div class="user-card">
 
-                <p>
+                        <div class="user-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
 
-                    Data da reserva:
-                    <strong>02/08/2026</strong>
+                        <h3>
+                            Concluídas
+                        </h3>
 
-                </p>
+                        <p>
+                            3 reservas já finalizadas.
+                        </p>
 
+                    </div>
+
+                </div>
 
             </div>
 
 
+            <!-- TABELA -->
+
+            <div class="user-table">
+
+                <div class="p-4">
+
+                    <h2 class="mb-3"
+                        style="font: 700 1.4rem 'Playfair Display', serif; color: #5A3E85;">
+                        Minhas reservas
+                    </h2>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-hover align-middle">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Livro
+                                    </th>
+
+                                    <th>
+                                        Data da reserva
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        O Pequeno Príncipe
+                                    </td>
+
+                                    <td>
+                                        20/08/2026
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-active">
+                                            Ativa
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        Dom Casmurro
+                                    </td>
+
+                                    <td>
+                                        18/08/2026
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-pending">
+                                            Aguardando
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>
+                                        Harry Potter
+                                    </td>
+
+                                    <td>
+                                        10/08/2026
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-finished">
+                                            Concluída
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
+    </main>
 
 
-    </div>
+    <!-- RODAPÉ -->
+
+    <footer class="user-footer">
+
+        © 2026 B-Sync • Sistema de Gerenciamento para Livrarias
+
+    </footer>
 
 
+    <!-- Bootstrap JS -->
 
-</main>
-
-
-
-
-
-<footer class="border-top py-4 text-center">
-
-    © 2026 B-Sync • Sistema de Gerenciamento para Livrarias
-
-</footer>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

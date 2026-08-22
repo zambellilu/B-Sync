@@ -1,46 +1,58 @@
-/* ===========================
-   B-SYNC - IDENTIDADE VISUAL
-=========================== */
+/* =========================
+   B-SYNC | IDENTIDADE VISUAL
+========================= */
 
 :root {
     --primary: #5A3E85;
     --secondary: #D85A62;
-    --accent: #D85A62;
-    --background: #F7F5FA;
+    --background: #fdf8f2;
     --white: #FFFFFF;
     --text: #2F2F2F;
     --text-light: #6B6B6B;
     --border: #E6E2ED;
-    --shadow: rgba(0, 0, 0, 0.08);
+    --shadow: rgba(0, 0, 0, .08);
 
-    --radius: 18px;
+    --radius: 12px;
     --transition: .3s;
 }
 
-body{
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
     background: var(--background);
     color: var(--text);
     font-family: 'Poppins', sans-serif;
 }
 
-h1,h2,h3,h4,h5{
+section {
+    flex: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: 'Playfair Display', serif;
     color: var(--primary);
 }
 
-/* ===========================
+
+/* =========================
    NAVBAR
-=========================== */
+========================= */
 
 .navbar-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
     color: var(--primary);
+    font-family: 'Playfair Display', serif;
 }
 
 .navbar-brand i {
-    color: var(--secondary);
     margin-right: 8px;
+    color: var(--secondary);
 }
 
 .nav-link {
@@ -55,333 +67,70 @@ h1,h2,h3,h4,h5{
 }
 
 
-/* ===========================
+/* =========================
    BOTÕES
-=========================== */
+========================= */
 
 .btn-primary {
-    background-color: var(--primary);
+    padding: 10px 22px;
+    background: var(--primary);
     border-color: var(--primary);
-    border-radius: 30px;
-    padding: 10px 25px;
+    border-radius: 7px;
     transition: var(--transition);
 }
 
 .btn-primary:hover {
-    background-color: var(--secondary);
+    background: var(--secondary);
     border-color: var(--secondary);
 }
-
 
 .btn-outline-primary {
     color: var(--primary);
     border-color: var(--primary);
-    border-radius: 30px;
+    border-radius: 7px;
+    transition: var(--transition);
 }
 
 .btn-outline-primary:hover {
-    background-color: var(--primary);
+    background: var(--primary);
     color: var(--white);
 }
 
 
-/* ===========================
-   HERO
-=========================== */
-
-section.container.py-5 h1 {
-    line-height: 1.2;
-    font-size: 3.5rem;
-}
-
-.lead {
-    color: var(--text-light);
-    line-height: 1.8;
-}
-
-
-/* ===========================
+/* =========================
    CARDS
-=========================== */
+========================= */
 
 .card {
-    border: none;
+    background: var(--white);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    background-color: var(--white);
-    box-shadow: 0 10px 25px var(--shadow);
+    box-shadow: 0 8px 25px var(--shadow);
     transition: var(--transition);
 }
 
-
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
 }
-
 
 .card i {
     color: var(--secondary);
 }
 
-
 .card h4 {
     color: var(--primary);
 }
-
-
-/* ===========================
-   FOOTER
-=========================== */
-
-footer {
-    color: var(--text-light);
-}
-
-/* ===========================
-   HERO - PÁGINA INICIAL
-=========================== */
-
-.hero {
-    min-height: 75vh;
-    display: flex;
-    align-items: center;
-}
-
-
-.hero .badge {
-    background: rgba(90, 62, 133, 0.1);
-    color: var(--primary);
-    padding: 10px 18px;
-    border-radius: 50px;
-    font-weight: 500;
-}
-
-
-.hero h1 {
-    font-size: 3.2rem;
-    line-height: 1.2;
-}
-
-
-.hero p {
-    color: var(--text-light);
-}
-
-
-.hero-card {
-
-    background: white;
-
-    border-radius: var(--radius);
-
-    padding: 50px 40px;
-
-    box-shadow: 0 15px 40px var(--shadow);
-
-}
-
-
-.hero-card i {
-
-    font-size: 90px;
-
-    color: var(--primary);
-
-}
-
-
-.hero-card h3 {
-
-    margin-top: 25px;
-
-    font-size: 2rem;
-
-}
-
-
-.hero-card p {
-
-    color: var(--text-light);
-
-}
-
-/* ===========================
-   CARDS DE DESTAQUE
-=========================== */
-
-.card {
-
-    border: none;
-
-    border-radius: var(--radius);
-
-    background: var(--white);
-
-    box-shadow: 0 10px 30px var(--shadow);
-
-    transition: var(--transition);
-
-}
-
-
-.card:hover {
-
-    transform: translateY(-8px);
-
-}
-
-
-.card i {
-
-    color: var(--accent);
-
-}
-
-
-.card h4 {
-
-    margin-top: 15px;
-
-}
-
 
 .card p {
-
     color: var(--text-light);
-
-}
-
-/* ===========================
-   PÁGINA SOBRE
-=========================== */
-
-
-.about-card {
-
-    background: var(--white);
-
-    border-radius: var(--radius);
-
-    padding: 40px;
-
-    box-shadow: 0 10px 30px var(--shadow);
-
 }
 
 
-.about-card i {
-
-    font-size: 70px;
-
-    color: var(--accent);
-
-}
-
-
-.about-card h3 {
-
-    margin-top: 20px;
-
-}
-
-
-.about-card p {
-
-    color: var(--text-light);
-
-}
-
-/* ===========================
-   ESTRUTURA DAS PÁGINAS
-=========================== */
-
-body {
-
-    min-height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-section {
-
-    flex: 1;
-
-}
-
+/* =========================
+   RODAPÉ
+========================= */
 
 footer {
-
     margin-top: auto;
-
-}
-
-/* ===========================
-   TEXTO DA PÁGINA SOBRE
-=========================== */
-
-.about-text p {
-
-    font-family: 'Poppins', sans-serif;
-
-    font-size: 1rem;
-
-    line-height: 1.8;
-
-    color: var(--text);
-
-    margin-bottom: 20px;
-
-}
-
-/* ===========================
-   AJUSTES DA PÁGINA SOBRE
-=========================== */
-
-.about-section {
-
-    min-height: 70vh;
-
-    display: flex;
-
-    align-items: center;
-
-}
-
-
-.about-section h1 {
-
-    margin-bottom: 35px;
-
-}
-
-
-.about-text {
-
-    max-width: 550px;
-
-}
-
-
-.about-text p {
-
-    font-family: 'Poppins', sans-serif;
-
-    font-size: 1.05rem;
-
-    line-height: 1.9;
-
-    color: var(--text);
-
-    margin-bottom: 25px;
-
-}
-
-
-.about-card {
-
-    padding: 50px;
-
+    color: var(--text-light);
 }

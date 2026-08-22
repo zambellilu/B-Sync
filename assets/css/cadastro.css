@@ -1,0 +1,322 @@
+/* ===========================
+   B-SYNC - CADASTRO
+=========================== */
+
+:root {
+    --cadastro-primary: #5A3E85;
+    --cadastro-secondary: #D85A62;
+    --cadastro-white: #FFFFFF;
+    --cadastro-light-text: #77717F;
+    --cadastro-border: #E5E0EA;
+}
+
+
+/* ===========================
+   ESTRUTURA
+=========================== */
+
+.cadastro-page {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #F7F5FA;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cadastro-screen {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+
+/* ===========================
+   LADO ESQUERDO
+=========================== */
+
+.cadastro-intro {
+    width: 55%;
+    height: 100vh;
+
+}
+
+.cadastro-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: left center;
+}
+
+.cadastro-intro-text {
+    position: absolute;
+    top: 150px;
+    left: 75px;
+    z-index: 2;
+
+    color: #FFFFFF;
+
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+
+/* ===========================
+   LADO DIREITO
+=========================== */
+
+.cadastro-area {
+    width: 45%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--cadastro-white);
+}
+
+.cadastro-content {
+    width: 100%;
+    max-width: 440px;
+    padding: 30px 40px;
+}
+
+
+/* ===========================
+   CABEÇALHO
+=========================== */
+
+.cadastro-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cadastro-logo {
+    width: 230px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.cadastro-header h2 {
+    margin: 10px 0 3px;
+
+    color: var(--cadastro-primary);
+
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 590;
+}
+
+.cadastro-header p {
+    margin: 0;
+
+    color: var(--cadastro-light-text);
+    font-size: 0.90rem;
+}
+
+
+/* ===========================
+   FORMULÁRIO
+=========================== */
+
+.cadastro-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--cadastro-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper > i:first-child {
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--cadastro-secondary);
+
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    width: 100%;
+    height: 44px;
+
+    padding: 0 45px;
+
+    border: 1px solid var(--cadastro-border);
+    border-radius: 9px;
+
+    background: var(--cadastro-white);
+
+    color: var(--cadastro-text);
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+
+    outline: none;
+}
+
+.input-wrapper input::placeholder {
+    color: #AAA4B1;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--cadastro-primary);
+
+    box-shadow: 0 0 0 3px rgba(90, 62, 133, 0.1);
+}
+
+/* ===========================
+   TIPO DE CONTA
+=========================== */
+
+.tipo-conta {
+    display: flex;
+    gap: 25px;
+    margin-top: 8px;
+}
+
+.tipo-conta label {
+    display: inline-flex;
+    align-items: center;
+
+    margin: 0;
+
+    color: var(--cadastro-text);
+    font-size: 0.85rem;
+    font-weight: 400;
+
+    cursor: pointer;
+}
+
+.tipo-conta input {
+    width: auto;
+    height: auto;
+    margin: 0;
+
+    accent-color: var(--cadastro-primary);
+}
+
+/* ===========================
+   BOTÃO
+=========================== */
+
+.cadastro-button {
+    width: 100%;
+    height: 44px;
+
+    margin-top: 5px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: var(--cadastro-primary);
+    color: var(--cadastro-white);
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+/* ===========================
+   LOGIN
+=========================== */
+
+.login-link {
+    margin: 14px 0 0;
+    text-align: center;
+    color: var(--cadastro-light-text);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.login-link a {
+    color: var(--cadastro-secondary);
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* ===========================
+   VOLTAR
+=========================== */
+
+.back-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    margin-top: 8px;
+
+    color: var(--cadastro-light-text);
+    font-size: 0.8rem;
+    font-weight: 500;
+
+    text-decoration: none;
+}
+
+.back-home:hover {
+    color: var(--cadastro-primary);
+}
+
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+
+@media (max-width: 700px) {
+
+    .cadastro-screen {
+        display: block;
+    }
+
+    .cadastro-intro {
+        width: 100%;
+        min-height: 250px;
+    }
+
+    .cadastro-area {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .cadastro-content {
+        max-width: 500px;
+        padding: 40px 30px;
+    }
+
+    .cadastro-intro-text {
+        top: 40px;
+        left: 30px;
+    }
+}

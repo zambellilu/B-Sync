@@ -1,56 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>B-Sync | Gerenciamento de Livrarias</title>
 
-    <!-- Google Fonts -->
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-
-   <!--<link rel="icon" href="assets/img/logo/favicon.png">-->
-
+    <link rel="stylesheet" href="assets/css/home.css">
 </head>
 
-<body>
+<body class="home">
 
-    <!-- Navbar -->
-
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
-
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
         <div class="container">
 
-            <a class="navbar-brand fw-bold" href="index.html">
-
-                <i class="bi bi-book-half"></i>
-
-                <span>B-Sync</span>
-
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo.png" alt="B-Sync">
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#menu">
-
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
-
             </button>
 
             <div class="collapse navbar-collapse" id="menu">
-
                 <ul class="navbar-nav ms-auto align-items-lg-center">
 
                     <li class="nav-item">
@@ -62,130 +47,208 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="sobre.html">Sobre</a>
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
                     </li>
 
                     <li class="nav-item ms-lg-3">
-
-                        <a href="pages/login.html" class="btn btn-primary">
-
-                            Entrar
-
-                        </a>
-
+                        <a href="pages/login.html" class="btn btn-primary">Entrar</a>
                     </li>
 
                 </ul>
-
             </div>
 
         </div>
-
     </nav>
 
-    <!-- Hero -->
 
-    <section class="hero container py-5">
+    <!-- HERO -->
+    <section class="home-hero">
 
-    <div class="row align-items-center">
+        <div class="hero-image">
+            <img src="assets/img/banner-livraria.png" alt="Livraria">
+        </div>
 
-        <div class="col-lg-6">
+        <div class="container">
 
-            <span class="badge mb-3">
-                Sistema de gerenciamento para livrarias
-            </span>
+            <div class="hero-content">
 
+                <h1>
+                    <span class="hero-title-top">Organize Histórias</span>
+                    <span class="hero-title-bottom">Conecte Pessoas</span>
+                </h1>
 
-            <h1 class="display-4 fw-bold">
+                <p>
+                    Gerencie livros, pedidos e reservas de forma simples,
+                    <br>
+                    organizada e eficiente.
+                </p>
 
-                Organize livros, pedidos e reservas em um só lugar.
-
-            </h1>
-
-
-            <p class="lead mt-4">
-
-                O B-Sync conecta todos os processos da sua livraria,
-                trazendo mais organização, praticidade e eficiência
-                para o gerenciamento do seu negócio.
-
-            </p>
-
-
-            <div class="mt-4">
-
-                <a href="pages/catalogo.html"
-                class="btn btn-primary btn-lg me-2">
-
+                <a href="pages/catalogo.html" class="btn btn-primary hero-btn">
                     Explorar catálogo
-
-                </a>
-
-
-                <a href="pages/login.html"
-                class="btn btn-outline-primary btn-lg">
-
-                    Acessar sistema
-
                 </a>
 
             </div>
 
         </div>
 
+    </section>
 
-        <div class="col-lg-6 text-center">
 
-            <div class="hero-card">
+    <!-- BENEFÍCIOS -->
+    <section class="home-section">
 
-                <i class="bi bi-book-half"></i>
+        <div class="container">
 
-                <h3>
+            <div class="section-title text-center">
 
-                    B-Sync
+                <span>POR QUE USAR O B-SYNC?</span>
 
-                </h3>
+                <h2>Mais organização para sua livraria</h2>
 
                 <p>
-
-                    Gestão inteligente para livrarias.
-
+                    Uma solução pensada para facilitar o gerenciamento
+                    dos principais processos da sua livraria.
                 </p>
 
             </div>
 
+            <div class="row g-4 mt-4">
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <i class="bi bi-grid-1x2"></i>
+                        <h3>Organização</h3>
+                        <p>
+                            Centralize as informações da livraria
+                            em um único sistema.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <i class="bi bi-lightning"></i>
+                        <h3>Praticidade</h3>
+                        <p>
+                            Acesse rapidamente as informações
+                            que você precisa.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <i class="bi bi-bar-chart"></i>
+                        <h3>Controle</h3>
+                        <p>
+                            Acompanhe livros, reservas e pedidos
+                            de forma organizada.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <i class="bi bi-check-circle"></i>
+                        <h3>Eficiência</h3>
+                        <p>
+                            Simplifique tarefas e facilite
+                            o dia a dia da sua equipe.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
+    </section>
 
-    </div>
 
-</section>
+    <!-- LIVROS EM DESTAQUE -->
+    <section class="home-section featured-books">
 
-    <!-- Destaques -->
+        <div class="container">
 
-    <section class="container py-5">
+            <div class="section-title">
 
-        <div class="row g-4">
+                <span>CATÁLOGO</span>
 
-            <div class="col-md-4">
+                <h2>Livros em destaque</h2>
 
-                <div class="card h-100">
+                <p>
+                    Confira alguns dos livros disponíveis
+                    em nosso catálogo.
+                </p>
 
-                    <div class="card-body text-center">
+            </div>
 
-                        <i class="bi bi-book display-5"></i>
+            <div class="row g-4 mt-3">
 
-                        <h4 class="mt-3">
+                <!-- LIVRO 1 -->
+                <div class="col-md-4">
 
-                            Catálogo
+                    <div class="book-card">
 
-                        </h4>
+                        <div class="book-card-body">
 
-                        <p>
+                            <span>Literatura</span>
 
-                            Consulte rapidamente os livros disponíveis.
+                            <h3>O Pequeno Príncipe</h3>
 
-                        </p>
+                            <p>Antoine de Saint-Exupéry</p>
+
+                            <strong>R$ 39,90</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LIVRO 2 -->
+                <div class="col-md-4">
+
+                    <div class="book-card">
+
+                        <div class="book-card-body">
+
+                            <span>Clássico</span>
+
+                            <h3>Dom Casmurro</h3>
+
+                            <p>Machado de Assis</p>
+
+                            <strong>R$ 34,90</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LIVRO 3 -->
+                <div class="col-md-4">
+
+                    <div class="book-card">
+
+                        <div class="book-card-body">
+
+                            <span>Fantasia</span>
+
+                            <h3>Harry Potter</h3>
+
+                            <p>J. K. Rowling</p>
+
+                            <strong>R$ 49,90</strong>
+
+                        </div>
 
                     </div>
 
@@ -193,25 +256,112 @@
 
             </div>
 
-            <div class="col-md-4">
+            <div class="text-center mt-5">
 
-                <div class="card h-100">
+                <a href="pages/catalogo.html" class="btn btn-outline-primary">
+                    Ver catálogo completo
+                    <i class="bi bi-arrow-right"></i>
+                </a>
 
-                    <div class="card-body text-center">
+            </div>
 
-                        <i class="bi bi-calendar-check display-5"></i>
+        </div>
 
-                        <h4 class="mt-3">
+    </section>
 
-                            Reservas
 
-                        </h4>
+    <!-- COMO FUNCIONA -->
+    <section class="home-section how-section">
 
-                        <p>
+        <div class="container">
 
-                            Organize reservas e acompanhe seus status.
+            <div class="section-title text-center">
 
-                        </p>
+                <span>COMO FUNCIONA</span>
+
+                <h2>Tudo mais simples e organizado</h2>
+
+            </div>
+
+            <div class="steps">
+
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Catálogo</h3>
+                    <p>
+                        Organize e consulte os livros disponíveis.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Reservas</h3>
+                    <p>
+                        Acompanhe os livros reservados pelos clientes.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Pedidos</h3>
+                    <p>
+                        Organize as encomendas realizadas.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <h3>Controle</h3>
+                    <p>
+                        Tenha tudo organizado em um só lugar.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SOBRE -->
+    <section class="home-about" id="sobre">
+
+        <div class="container">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <span class="section-label">
+                        SOBRE O B-SYNC
+                    </span>
+
+                    <h2>
+                        Uma forma mais simples de gerenciar sua livraria.
+                    </h2>
+
+                    <p>
+                        O B-Sync foi desenvolvido para centralizar informações
+                        e facilitar a organização dos processos de uma livraria.
+                    </p>
+
+                    <p>
+                        Com uma interface simples e intuitiva, o sistema reúne
+                        catálogo, reservas, pedidos e gerenciamento em um único ambiente.
+                    </p>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="about-box">
+
+                        <div class="about-image">
+
+                            <img src="assets/img/banner-livraria.png" alt="B-Sync">
+
+                        </div>
 
                     </div>
 
@@ -219,24 +369,79 @@
 
             </div>
 
-            <div class="col-md-4">
+        </div>
 
-                <div class="card h-100">
+    </section>
 
-                    <div class="card-body text-center">
 
-                        <i class="bi bi-cart3 display-5"></i>
+    <!-- CONTATO -->
+    <section class="home-contact" id="contato">
 
-                        <h4 class="mt-3">
+        <div class="container">
 
-                            Pedidos
+            <div class="section-title text-center">
 
-                        </h4>
+                <span>ENTRE EM CONTATO</span>
+
+                <h2>Estamos aqui para ajudar</h2>
+
+                <p>
+                    Entre em contato com a equipe B-Sync
+                    para tirar dúvidas ou enviar sugestões.
+                </p>
+
+            </div>
+
+            <div class="row g-4 justify-content-center mt-4">
+
+                <div class="col-md-4">
+
+                    <div class="contact-card">
+
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+
+                        <h3>E-mail</h3>
 
                         <p>
+                            contato@bsync.com
+                        </p>
 
-                            Controle encomendas realizadas pelos clientes.
+                    </div>
 
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="contact-card">
+
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+
+                        <h3>Telefone</h3>
+
+                        <p>
+                            (51) 99999-9999
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="contact-card">
+
+                        <div class="contact-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+
+                        <h3>Atendimento</h3>
+
+                        <p>
+                            Segunda a sexta, das 8h às 18h.
                         </p>
 
                     </div>
@@ -250,30 +455,47 @@
     </section>
 
 
-    <!-- Rodapé -->
-
-    <footer class="bg-white border-top py-4">
+    <!-- CHAMADA FINAL -->
+    <section class="home-cta">
 
         <div class="container text-center">
 
-            <p class="mb-0">
+            <h2>Pronto para conhecer o B-Sync?</h2>
 
+            <p>
+                Explore nosso catálogo e descubra uma nova
+                forma de organizar sua livraria.
+            </p>
+
+            <a href="pages/catalogo.html" class="btn btn-light">
+                Explorar catálogo
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+    <footer class="home-footer">
+
+        <div class="container text-center">
+
+            <p>
                 © 2026 B-Sync • Sistema de Gerenciamento para Livrarias
-
             </p>
 
         </div>
 
     </footer>
 
-    <!-- Bootstrap JS -->
 
+    <!-- JAVASCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- JS -->
-
     <script src="assets/js/script.js"></script>
 
 </body>
 
 </html>
+
+

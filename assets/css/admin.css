@@ -1,0 +1,481 @@
+/* =========================
+   B-SYNC | ÁREA ADMINISTRATIVA
+========================= */
+
+:root {
+    --purple:#5A3E85;
+    --red:#D85A62;
+    --background:#F7F5FA;
+    --white:#FFF;
+    --text:#2F2F2F;
+    --light-text:#77717F;
+    --border:#E5E0EA;
+}
+
+body {
+    margin:0;
+    background:var(--background);
+    color:var(--text);
+    font-family:'Poppins',sans-serif;
+}
+
+.admin-layout {
+    display:flex;
+    min-height:100vh;
+}
+
+
+/* =========================
+   MENU LATERAL
+========================= */
+
+.admin-sidebar {
+    width:240px;
+    padding:25px 18px;
+    background:var(--white);
+    border-right:1px solid var(--border);
+    display:flex;
+    flex-direction:column;
+}
+
+.admin-logo {
+    display:flex;
+    justify-content:center;
+    margin-bottom:30px;
+}
+
+.admin-logo img { width:200px; }
+
+.admin-profile {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px;
+    margin-bottom:25px;
+    background:var(--background);
+    border-radius:10px;
+}
+
+.admin-profile-icon {
+    width:38px;
+    height:38px;
+    display:grid;
+    place-items:center;
+    background:var(--purple);
+    color:var(--white);
+    border-radius:50%;
+}
+
+.admin-profile strong,
+.admin-profile small { display:block; }
+
+.admin-profile strong { font-size:.8rem; }
+
+.admin-profile small {
+    color:var(--light-text);
+    font-size:.65rem;
+}
+
+.admin-menu {
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.admin-menu a,
+.admin-sidebar-footer a {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:11px 12px;
+    border-radius:8px;
+    color:var(--light-text);
+    text-decoration:none;
+    font-size:.88rem;
+}
+
+.admin-menu a:hover,
+.admin-menu .active,
+.admin-sidebar-footer a:hover {
+    background:#F0EBF6;
+    color:var(--purple);
+}
+
+.admin-sidebar-footer {
+    margin-top:auto;
+    padding-top:15px;
+    border-top:1px solid var(--border);
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.admin-main {
+    flex:1;
+    padding:35px 40px;
+}
+
+.admin-header {
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:30px;
+}
+
+.admin-page-label {
+    color:var(--red);
+    font-size:.7rem;
+    font-weight:600;
+    letter-spacing:1.5px;
+}
+
+.admin-header h1 {
+    margin:6px 0;
+    color:var(--purple);
+    font:600 2.6rem 'Playfair Display',serif;
+}
+
+.admin-header p {
+    margin:0;
+    color:var(--light-text);
+    font-size:.85rem;
+}
+
+.admin-header .btn {
+    height:fit-content;
+    padding:10px 14px;
+    font-size:.75rem;
+    border-radius:7px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.admin-stats {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.admin-stat-card {
+    display:flex;
+    align-items:center;
+    gap:16px;
+    min-height:105px;
+    padding:20px;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+}
+
+.stat-icon,
+.book-stat-icon {
+    width:48px;
+    height:48px;
+    display:grid;
+    place-items:center;
+    flex-shrink:0;
+    background:#F0EBF6;
+    color:var(--purple);
+    border-radius:10px;
+}
+
+.stat-icon.red {
+    background:#FBECEE;
+    color:var(--red);
+}
+
+.admin-stat-card span,
+.admin-stat-card strong {
+    display:block;
+}
+
+.admin-stat-card span {
+    color:var(--light-text);
+    font-size:.75rem;
+}
+
+.admin-stat-card strong {
+    font-size:1.7rem;
+}
+
+
+/* =========================
+   PAINÉIS
+========================= */
+
+.admin-dashboard-grid {
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:18px;
+}
+
+.admin-panel,
+.books-container {
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:10px;
+}
+
+.panel-header,
+.books-header {
+    display:flex;
+    justify-content:space-between;
+    padding:23px;
+}
+
+.panel-header h2,
+.books-header h2 {
+    margin:0 0 4px;
+}
+
+.panel-header h2 { font-size:.95rem; }
+.books-header h2 { font-size:1.3rem; }
+
+.panel-header p,
+.books-header p {
+    margin:0;
+    color:var(--light-text);
+    font-size:.7rem;
+}
+
+.panel-header i,
+.books-header span {
+    color:var(--purple);
+}
+
+
+/* =========================
+   ATIVIDADES
+========================= */
+
+.activity-list,
+.quick-actions {
+    padding:0 23px;
+}
+
+.activity-item,
+.quick-action {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.activity-item:last-child,
+.quick-action:last-child {
+    border:0;
+}
+
+.activity-icon {
+    width:35px;
+    height:35px;
+    display:grid;
+    place-items:center;
+    background:#F0EBF6;
+    color:var(--purple);
+}
+
+.activity-item div:nth-child(2),
+.quick-action div {
+    flex:1;
+}
+
+.activity-item strong,
+.quick-action strong {
+    display:block;
+    font-size:.75rem;
+    font-weight:500;
+}
+
+.activity-item span,
+.quick-action span {
+    color:var(--light-text);
+    font-size:.65rem;
+}
+
+.activity-item small {
+    color:#AAA4B1;
+    font-size:.6rem;
+}
+
+.quick-action {
+    color:var(--text);
+    text-decoration:none;
+}
+
+.quick-action i:first-child { color:var(--purple); }
+
+.quick-action:hover { color:var(--purple); }
+
+
+/* =========================
+   LIVROS
+========================= */
+
+.book-search {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 18px;
+    margin-bottom:25px;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:10px;
+}
+
+.book-search i { color:var(--purple); }
+
+.book-search input {
+    width:100%;
+    border:0;
+    outline:0;
+    font-family:inherit;
+}
+
+.books-container { overflow:hidden; }
+
+.books-header {
+    align-items:center;
+    border-bottom:1px solid var(--border);
+}
+
+.books-header span { font-size:.75rem; }
+
+.book-item {
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:22px 23px;
+    border-bottom:1px solid var(--border);
+}
+
+.book-item:last-child { border:0; }
+
+.book-cover {
+    width:52px;
+    height:68px;
+    display:grid;
+    place-items:center;
+    flex-shrink:0;
+    background:#F0EBF6;
+    color:var(--purple);
+    border-radius:7px;
+    font-size:1.4rem;
+}
+
+.book-info { flex:1; }
+
+.book-info h3 {
+    margin:0 0 6px;
+    font-size:.95rem;
+    font-weight:500;
+}
+
+.book-info p {
+    margin:0 0 9px;
+    color:var(--light-text);
+    font-size:.78rem;
+}
+
+.book-category,
+.book-status {
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:20px;
+    font-size:.72rem;
+}
+
+.book-category {
+    color:var(--purple);
+    background:#F0EBF6;
+}
+
+.book-status.available {
+    color:#25803D;
+    background:#E8F5EC;
+}
+
+.book-status.unavailable {
+    color:#C84C57;
+    background:#FBEAEC;
+}
+
+.book-price {
+    font-size:.85rem;
+    font-weight:500;
+}
+
+.book-actions {
+    display:flex;
+    gap:4px;
+}
+
+.book-action {
+    width:34px;
+    height:34px;
+    border:0;
+    border-radius:7px;
+    background:transparent;
+}
+
+.book-action:hover { background:#F0EBF6; }
+.book-action.edit { color:var(--purple); }
+.book-action.delete { color:var(--red); }
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media(max-width:1000px) {
+    .admin-stats {
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .admin-dashboard-grid {
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:700px) {
+    .admin-layout { display:block; }
+
+    .admin-sidebar {
+        width:auto;
+        min-height:auto;
+    }
+
+    .admin-menu {
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .admin-sidebar-footer { display:none; }
+
+    .admin-main { padding:25px 20px; }
+
+    .admin-header {
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .book-item { flex-wrap:wrap; }
+
+    .book-info {
+        min-width:calc(100% - 75px);
+    }
+
+    .book-price { margin-left:70px; }
+}
+
+@media(max-width:450px) {
+    .admin-stats {
+        grid-template-columns:1fr;
+    }
+}

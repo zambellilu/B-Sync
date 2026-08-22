@@ -2,288 +2,107 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>B-Sync | Pedidos</title>
-
-
-    <!-- Google Fonts -->
+    <title>B-Sync | Meus Pedidos</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-
-    <!-- Bootstrap -->
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Bootstrap Icons -->
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
-
-    <!-- CSS -->
-
-    <link rel="stylesheet" href="../assets/css/style.css">
-
-
+    <link rel="stylesheet" href="../assets/css/usuario.css">
 </head>
 
+<body class="user-page">
 
-<body>
+    <nav class="navbar navbar-expand-lg user-navbar">
 
+        <div class="container">
 
-<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../assets/img/logo.png" alt="B-Sync">
+            </a>
 
-    <div class="container">
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="menu">
 
-        <a class="navbar-brand fw-bold" href="dashboard.html">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reservas.html">Reservas</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="pedidos.html">Pedidos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="perfil.html">Perfil</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-primary" href="login.html">Sair</a></li>
+                </ul>
 
-            <i class="bi bi-book-half"></i>
-
-            B-Sync
-
-        </a>
-
-
-
-        <button class="navbar-toggler" type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#menu">
-
-            <span class="navbar-toggler-icon"></span>
-
-        </button>
-
-
-
-        <div class="collapse navbar-collapse" id="menu">
-
-
-            <ul class="navbar-nav ms-auto align-items-lg-center">
-
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="dashboard.html">
-
-                        Dashboard
-
-                    </a>
-
-                </li>
-
-
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="perfil.html">
-
-                        Perfil
-
-                    </a>
-
-                </li>
-
-
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="reservas.html">
-
-                        Reservas
-
-                    </a>
-
-                </li>
-
-
-
-                <li class="nav-item ms-lg-3">
-
-                    <a href="login.html" class="btn btn-outline-primary">
-
-                        Sair
-
-                    </a>
-
-                </li>
-
-
-            </ul>
-
-
+            </div>
         </div>
+    </nav>
 
 
-    </div>
+    <main class="user-content">
 
-</nav>
+        <div class="container">
 
+            <div class="user-title">
+                <span>PEDIDOS</span>
+                <h1>Meus pedidos</h1>
+                <p>Acompanhe suas solicitações de livros.</p>
+            </div>
 
+            <div class="user-table">
 
+                <div class="table-responsive">
 
-<main class="container py-5">
+                    <table class="table table-hover">
 
+                        <thead>
+                            <tr>
+                                <th>Livro</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
 
-    <h1 class="mb-5">
+                        <tbody>
 
-        Meus Pedidos
+                            <tr>
+                                <td>Harry Potter</td>
+                                <td>19/08/2026</td>
+                                <td>
+                                    <span class="status status-active">Em andamento</span>
+                                </td>
+                            </tr>
 
-    </h1>
+                            <tr>
+                                <td>O Hobbit</td>
+                                <td>10/08/2026</td>
+                                <td>
+                                    <span class="status status-finished">Concluído</span>
+                                </td>
+                            </tr>
 
+                        </tbody>
 
-
-    <div class="row g-4">
-
-
-
-        <div class="col-md-6">
-
-
-            <div class="card p-4">
-
-
-                <div class="d-flex align-items-center gap-3">
-
-
-                    <i class="bi bi-cart-check display-5"></i>
-
-
-                    <div>
-
-
-                        <h4>
-
-                            Pedido #001
-
-                        </h4>
-
-
-                        <p class="text-muted mb-1">
-
-                            2 livros selecionados
-
-                        </p>
-
-
-                        <span class="badge bg-success">
-
-                            Concluído
-
-                        </span>
-
-
-                    </div>
-
+                    </table>
 
                 </div>
 
-
-                <hr>
-
-
-                <p>
-
-                    Data:
-                    <strong>01/08/2026</strong>
-
-                </p>
-
-
             </div>
-
 
         </div>
 
+    </main>
 
 
-
-
-        <div class="col-md-6">
-
-
-            <div class="card p-4">
-
-
-                <div class="d-flex align-items-center gap-3">
-
-
-                    <i class="bi bi-cart display-5"></i>
-
-
-                    <div>
-
-
-                        <h4>
-
-                            Pedido #002
-
-                        </h4>
-
-
-                        <p class="text-muted mb-1">
-
-                            1 livro selecionado
-
-                        </p>
-
-
-                        <span class="badge bg-warning text-dark">
-
-                            Em andamento
-
-                        </span>
-
-
-                    </div>
-
-
-                </div>
-
-
-                <hr>
-
-
-                <p>
-
-                    Data:
-                    <strong>05/08/2026</strong>
-
-                </p>
-
-
-            </div>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-</main>
-
-
-
-
-
-<footer class="border-top py-4 text-center">
-
-    © 2026 B-Sync • Sistema de Gerenciamento para Livrarias
-
-</footer>
-
-
+    <footer class="user-footer">
+        © 2026 B-Sync • Sistema de Gerenciamento para Livrarias
+    </footer>
 
 </body>
-
 </html>
