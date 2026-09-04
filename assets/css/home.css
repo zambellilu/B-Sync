@@ -14,7 +14,7 @@
 ========================= */
 
 .home .navbar {
-    padding: 14px 0;
+    padding: 12px 0;
     background: #fdf8f2;
     border-bottom: 2px solid #5A3E85;
 }
@@ -26,7 +26,7 @@
 }
 
 .home .navbar-brand img {
-    width: 220px;
+    width: 200px;
     height: auto;
     display: block;
 }
@@ -39,12 +39,13 @@
     position: relative;
     padding: 8px 12px !important;
     color: #555;
-    font-size: .9rem;
+    font-size: .95rem;
     font-weight: 500;
     transition: .2s;
 }
 
-.home .nav-link:hover {
+.home .nav-link:hover,
+.home .nav-link.active {
     color: #5A3E85;
 }
 
@@ -59,14 +60,23 @@
     transition: width .2s;
 }
 
-.home .nav-link:hover::after {
+.home .nav-link:hover::after,
+.home .nav-link.active::after {
     width: calc(100% - 24px);
 }
 
 .home .navbar .btn {
-    padding: 8px 18px;
-    font-size: .85rem;
+    padding: 9px 20px;
+    border: 0;
     border-radius: 7px;
+    background: #5A3E85;
+    color: #fff;
+    font-size: .85rem;
+    transition: .2s;
+}
+
+.home .navbar .btn:hover {
+    background: #D85A62;
 }
 
 
@@ -93,9 +103,7 @@
 }
 
 
-/* =========================
-   TEXTO DO HERO
-========================= */
+/* TEXTO */
 
 .hero-content {
     position: relative;
@@ -107,7 +115,7 @@
 .hero-content h1 {
     margin: 0 0 20px;
     font-family: 'Playfair Display', serif;
-    font-size: 2.7rem;
+    font-size: 2.8rem;
     line-height: 1.15;
 }
 
@@ -123,15 +131,14 @@
 
 .hero-content p {
     max-width: 500px;
-    margin: 0 0 20px;
-    color: #6B6B6B;
-    font-family: 'Poppins', sans-serif;
+    margin: 0 0 22px;
+    color: #5f5964;
     font-size: .95rem;
-    line-height: 1.5;
+    line-height: 1.7;
 }
 
 .hero-btn {
-    margin-top: 10px;
+    margin-top: 8px;
     padding: 10px 22px;
     border: 0;
     border-radius: 7px;
@@ -139,9 +146,7 @@
 }
 
 
-/* =========================
-   DEGRADÊ DO HERO
-========================= */
+/* DEGRADÊ */
 
 .home-hero::after {
     content: "";
@@ -153,9 +158,9 @@
     background:
         linear-gradient(
             90deg,
-            rgba(253, 248, 242, .75) 0%,
-            rgba(253, 248, 242, .40) 28%,
-            rgba(253, 248, 242, .10) 55%,
+            rgba(253, 248, 242, .82) 0%,
+            rgba(253, 248, 242, .48) 28%,
+            rgba(253, 248, 242, .12) 55%,
             transparent 75%
         ),
         linear-gradient(
@@ -183,9 +188,16 @@
     text-align: center;
 }
 
+.section-title > span {
+    color: #D85A62;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
 .section-title h2,
 .home-about h2 {
-    margin: 10px 0;
+    margin: 10px 0 12px;
     color: #5A3E85;
     font: 700 2rem 'Playfair Display', serif;
 }
@@ -193,6 +205,7 @@
 .section-title p,
 .home-about p {
     color: #77717F;
+    font-size: .9rem;
     line-height: 1.7;
 }
 
@@ -202,40 +215,46 @@
 ========================= */
 
 .feature-card {
+    position: relative;
     height: 100%;
-    padding: 30px 22px;
-    background: #FFFCF8;
-    border: 1px solid #E5E0EA;
+    padding: 32px 22px;
+
+    background: rgba(255, 255, 255, .28);
+    border: 1px solid #e7dfd7;
     border-radius: 12px;
+
     text-align: center;
-    transition: .2s;
+    transition: .25s ease;
 }
 
 .feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(90, 62, 133, .08);
+    background: #fffaf5;
+    border-color: #d8cde3;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(90, 62, 133, .07);
 }
 
 .feature-card i {
     color: #5A3E85;
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .feature-card h3 {
     margin: 15px 0 8px;
+    color: #5A3E85;
     font-size: 1rem;
 }
 
 .feature-card p {
     margin: 0;
     color: #77717F;
-    font-size: .85rem;
+    font-size: .84rem;
     line-height: 1.6;
 }
 
 
 /* =========================
-   LIVROS
+   LIVROS EM DESTAQUE
 ========================= */
 
 .featured-books {
@@ -244,52 +263,54 @@
 }
 
 .book-card {
+    position: relative;
     height: 100%;
-    overflow: hidden;
-    background: #FFFCF8;
-    border: 1px solid #E5E0EA;
+    background: #fffaf5;
+
+    border: 1px solid #e7dfd7;
     border-radius: 12px;
-    transition: .2s;
+
+    transition: .25s ease;
 }
 
 .book-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(90, 62, 133, .08);
-}
-
-.book-card-cover {
-    height: 180px;
-    display: grid;
-    place-items: center;
-    background: #F0EBF6;
-    color: #5A3E85;
-    font-size: 3rem;
+    border-color: #d8cde3;
+    box-shadow: 0 10px 25px rgba(90, 62, 133, .08);
 }
 
 .book-card-body {
-    padding: 20px;
+    padding: 25px;
 }
 
 .book-card-body > span {
+    display: inline-block;
+    padding: 5px 10px;
+
+    background: rgba(216, 90, 98, .07);
+    border-radius: 20px;
+
     color: #D85A62;
-    font-size: .7rem;
+    font-size: .68rem;
     font-weight: 600;
 }
 
 .book-card h3 {
-    margin: 8px 0 4px;
-    color: #2F2F2F;
-    font-size: 1rem;
+    margin: 13px 0 5px;
+    color: #5A3E85;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
 }
 
 .book-card p {
     margin-bottom: 15px;
     color: #77717F;
-    font-size: .85rem;
+    font-size: .82rem;
 }
 
 .book-card strong {
     color: #5A3E85;
+    font-size: .92rem;
 }
 
 
@@ -305,36 +326,43 @@
 .steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 30px;
     margin-top: 45px;
 }
 
 .step {
+    position: relative;
     text-align: center;
 }
 
 .step-number {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
+
     display: grid;
     place-items: center;
     margin: auto;
-    background: #5A3E85;
-    color: #FFF;
+
+    background: #f0ebf6;
+    border: 1px solid #d8cde3;
+
+    color: #5A3E85;
     border-radius: 50%;
-    font-size: .8rem;
+
+    font-size: .75rem;
     font-weight: 600;
 }
 
 .step h3 {
     margin: 15px 0 7px;
+    color: #5A3E85;
     font-size: 1rem;
 }
 
 .step p {
     margin: 0;
     color: #77717F;
-    font-size: .95rem;
+    font-size: .84rem;
     line-height: 1.6;
 }
 
@@ -345,20 +373,31 @@
 
 .home-about {
     padding: 90px 0;
-    background: #fdf8f2;
+    background: #eee7f5;
 }
 
 .home-about h2 {
+    margin-top: 10px;
     font-size: 2.3rem;
 }
 
 .home-about p {
-    font-size: .95rem;
+    max-width: 520px;
+    font-size: .9rem;
+}
+
+.section-label {
+    color: #D85A62;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
 }
 
 .about-image {
     width: 100%;
     overflow: hidden;
+
+    border: 1px solid #d8cde3;
     border-radius: 15px;
 }
 
@@ -366,15 +405,15 @@
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 15px;
 }
+
 
 /* =========================
    CONTATO
 ========================= */
 
 .home-contact {
-    padding: 70px 0;
+    padding: 80px 0;
     background: #fdf8f2;
 }
 
@@ -383,24 +422,12 @@
     margin: 0 auto;
 }
 
-.home-contact .section-title span {
-    color: #D85A62;
-    font-size: .7rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-}
-
 .home-contact .section-title h2 {
     margin: 10px 0;
-    color: #5A3E85;
-    font: 700 2rem 'Playfair Display', serif;
 }
 
 .home-contact .section-title p {
     margin: 0;
-    color: #77717F;
-    font-size: .82rem;
-    line-height: 1.7;
 }
 
 
@@ -408,32 +435,34 @@
 
 .contact-card {
     height: 100%;
-    padding: 22px 15px;
+    padding: 25px 18px;
 
-    background: #fffaf5;
-    border: 1px solid #ebe4dc;
-    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #e7dfd7;
+    border-radius: 12px;
 
     text-align: center;
-    transition: .2s;
+    transition: .25s ease;
 }
 
 .contact-card:hover {
+    background: #fffaf5;
     border-color: #d8cde3;
+    transform: translateY(-3px);
 }
 
 
 /* ÍCONE */
 
 .contact-icon {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin: 0 auto 12px;
+    margin: 0 auto 13px;
 
     background: #f0ebf6;
     border-radius: 50%;
@@ -443,19 +472,18 @@
 }
 
 .contact-card h3 {
-    margin: 0 0 5px;
-
-    color: #2F2F2F;
-    font-size: .9rem;
+    margin: 0 0 6px;
+    color: #5A3E85;
+    font-size: .95rem;
     font-weight: 600;
 }
 
 .contact-card p {
     margin: 0;
-
     color: #77717F;
-    font-size: .75rem;
+    font-size: .78rem;
 }
+
 
 /* =========================
    CHAMADA FINAL
@@ -464,19 +492,22 @@
 .home-cta {
     padding: 70px 20px;
     background: #5A3E85;
-    color: #FFF;
+    color: #fff;
     text-align: center;
 }
 
 .home-cta h2 {
-    color: #FFF;
+    margin-bottom: 10px;
+    color: #fff;
     font: 700 2rem 'Playfair Display', serif;
 }
 
 .home-cta p {
     max-width: 550px;
-    margin: 10px auto 25px;
+    margin: 0 auto 25px;
+    color: #fff;
     font-size: .85rem;
+    line-height: 1.7;
     opacity: .9;
 }
 
@@ -499,7 +530,7 @@
 .home-footer p {
     margin: 0;
     color: #77717F;
-    font-size: .75rem;
+    font-size: .78rem;
 }
 
 
@@ -516,29 +547,78 @@ html {
    RESPONSIVIDADE
 ========================= */
 
-@media (max-width: 900px) {
+@media (max-width: 991px) {
+
+    .home .navbar-brand img {
+        width: 180px;
+    }
+
+    .hero-content {
+        padding: 90px 0;
+    }
 
     .hero-content h1 {
-        font-size: 2.6rem;
+        font-size: 2.5rem;
     }
 
     .steps {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .home-about {
+        padding: 70px 0;
+    }
 }
 
-@media (max-width: 600px) {
+
+@media (max-width: 768px) {
+
+    .home .navbar-brand img {
+        width: 170px;
+    }
+
+    .hero-content {
+        padding: 80px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.3rem;
+    }
+
+    .home-section,
+    .featured-books,
+    .how-section,
+    .home-contact,
+    .home-about {
+        padding: 65px 20px;
+    }
+
+    .home-about h2 {
+        font-size: 2rem;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .home .navbar-brand img {
+        width: 160px;
+    }
 
     .home-hero {
         min-height: 500px;
     }
 
     .hero-content {
-        padding: 90px 20px;
+        padding: 85px 20px;
     }
 
     .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
+    }
+
+    .hero-content p {
+        font-size: .88rem;
     }
 
     .steps {
@@ -548,7 +628,16 @@ html {
     .home-section,
     .featured-books,
     .how-section,
+    .home-contact,
     .home-about {
-        padding: 60px 20px;
+        padding: 55px 20px;
+    }
+
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .home-about h2 {
+        font-size: 1.8rem;
     }
 }

@@ -1,0 +1,383 @@
+
+/* =========================
+   B-SYNC | DETALHES DO LIVRO
+========================= */
+
+.detalhes-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background: #fdf8f2;
+    color: #2F2F2F;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.detalhes-page .navbar {
+    padding: 12px 0;
+    background: #fdf8f2;
+    border-bottom: 2px solid #5A3E85;
+}
+
+.detalhes-page .navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.detalhes-page .navbar-brand img {
+    width: 200px;
+    display: block;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #5A3E85;
+    font-size: .95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.back-link i {
+    font-size: 1rem;
+}
+
+.back-link:hover {
+    color: #D85A62;
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.detalhes-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 70px 0;
+}
+
+
+/* =========================
+   CARD PRINCIPAL
+========================= */
+
+.detalhes-card {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 65px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px;
+    background: #fff;
+    border: 1px solid #E5E0EA;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(90, 62, 133, .06);
+}
+
+
+/* =========================
+   REPRESENTAÇÃO DO LIVRO
+========================= */
+
+.book-visual {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f7f1e9;
+    border: 1px solid #E5E0EA;
+    border-radius: 12px;
+    position: relative;
+}
+
+.book-icon {
+    width: 145px;
+    height: 175px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #5A3E85;
+    border-radius: 8px 14px 14px 8px;
+    color: #fff;
+    box-shadow: -8px 8px 0 #D85A62;
+}
+
+.book-icon i {
+    font-size: 4rem;
+}
+
+.book-visual > span {
+    margin-top: 30px;
+    padding: 7px 14px;
+    background: rgba(216, 90, 98, .08);
+    border-radius: 20px;
+    color: #D85A62;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+
+/* =========================
+   INFORMAÇÕES
+========================= */
+
+.book-details {
+    padding-right: 15px;
+}
+
+.details-label {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #D85A62;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.book-details h1 {
+    margin: 0 0 8px;
+    color: #5A3E85;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+.book-author {
+    margin: 0 0 25px;
+    color: #D85A62;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.book-description {
+    max-width: 500px;
+    margin: 0;
+    color: #77717F;
+    font-size: .92rem;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   DIVISOR
+========================= */
+
+.details-divider {
+    width: 100%;
+    height: 1px;
+    margin: 28px 0;
+    background: #E5E0EA;
+}
+
+
+/* =========================
+   INFORMAÇÕES DO LIVRO
+========================= */
+
+.details-info {
+    display: flex;
+    gap: 45px;
+    margin-bottom: 30px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-item span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #77717F;
+    font-size: .78rem;
+}
+
+.info-item span i {
+    color: #5A3E85;
+    font-size: .8rem;
+}
+
+.info-item strong {
+    color: #2F2F2F;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.info-item strong.available {
+    color: #5A3E85;
+}
+
+
+/* =========================
+   BOTÃO RESERVAR
+========================= */
+
+.reserve-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 13px 24px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: #5A3E85;
+    color: #fff;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: .85rem;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.reserve-btn i {
+    font-size: .95rem;
+}
+
+.reserve-btn:hover {
+    background: #D85A62;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.detalhes-footer {
+    padding: 25px 0;
+    background: #fdf8f2;
+    border-top: 1px solid #E5E0EA;
+    text-align: center;
+}
+
+.detalhes-footer p {
+    margin: 0;
+    color: #77717F;
+    font-size: .78rem;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 991px) {
+
+    .detalhes-page .navbar-brand img {
+        width: 180px;
+    }
+
+    .back-link {
+        font-size: .9rem;
+    }
+
+    .detalhes-card {
+        grid-template-columns: 300px 1fr;
+        gap: 40px;
+        padding: 35px;
+    }
+
+    .book-visual {
+        height: 380px;
+    }
+
+    .book-details h1 {
+        font-size: 2.1rem;
+    }
+
+    .book-description {
+        font-size: .88rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .detalhes-content {
+        padding: 45px 20px;
+    }
+
+    .detalhes-card {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 25px;
+    }
+
+    .book-visual {
+        height: 300px;
+    }
+
+    .book-details {
+        padding-right: 0;
+    }
+
+    .book-details h1 {
+        font-size: 2rem;
+    }
+
+    .book-description {
+        font-size: .88rem;
+    }
+
+    .reserve-btn {
+        font-size: .85rem;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .detalhes-page .navbar-brand img {
+        width: 160px;
+    }
+
+    .back-link {
+        font-size: .8rem;
+    }
+
+    .back-link i {
+        font-size: .9rem;
+    }
+
+    .book-visual {
+        height: 260px;
+    }
+
+    .book-icon {
+        width: 110px;
+        height: 135px;
+    }
+
+    .book-icon i {
+        font-size: 3rem;
+    }
+
+    .details-info {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .reserve-btn {
+        width: 100%;
+        padding: 13px 20px;
+    }
+}

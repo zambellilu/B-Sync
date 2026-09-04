@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +9,13 @@
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
@@ -32,566 +24,372 @@
 
 <body class="catalogo-page">
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
-
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
-
         <div class="container">
 
             <a class="navbar-brand" href="../index.html">
                 <img src="../assets/img/logo.png" alt="B-Sync">
             </a>
 
-            <button
-                class="navbar-toggler"
-                type="button"
+            <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#menu"
                 aria-controls="menu"
                 aria-expanded="false"
                 aria-label="Abrir menu">
-
                 <span class="navbar-toggler-icon"></span>
-
             </button>
 
             <div class="collapse navbar-collapse" id="menu">
-
                 <ul class="navbar-nav ms-auto align-items-lg-center">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html">
-                            Início
-                        </a>
+                        <a class="nav-link" href="../index.html">Início</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="catalogo.html">
-                            Catálogo
-                        </a>
+                        <a class="nav-link active" href="catalogo.html">Catálogo</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html#sobre">
-                            Sobre
-                        </a>
+                        <a class="nav-link" href="../index.html#sobre">Sobre</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="../contato.html">
-                            Contato
-                        </a>
+                        <a class="nav-link" href="../index.html#contato">Contato</a>
                     </li>
 
                     <li class="nav-item ms-lg-3">
-                        <a href="login.html" class="btn btn-primary">
-                            Entrar
-                        </a>
+                        <a href="login.html" class="btn btn-primary">Entrar</a>
                     </li>
 
                 </ul>
-
             </div>
 
         </div>
-
     </nav>
 
 
-    <!-- =========================
-         CONTEÚDO
-    ========================== -->
+    <!-- CABEÇALHO -->
+    <section class="catalogo-header">
+        <div class="container">
 
-    <main>
+            <span class="catalogo-label">NOSSO CATÁLOGO</span>
 
-        <!-- CABEÇALHO -->
-
-        <section class="catalogo-header">
-
-            <div class="container">
-
-                <span class="catalogo-label">
-                    NOSSO CATÁLOGO
-                </span>
-
-                <h1>
-                    Encontre sua próxima história
-                </h1>
-
-                <p>
-                    Explore nosso catálogo e encontre livros para
-                    diferentes momentos, estilos e interesses.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- CATÁLOGO -->
-
-        <section class="catalogo-content">
-
-            <div class="container">
-
-                <!-- BUSCA E FILTRO -->
-
-                <div class="catalogo-tools">
-
-                    <div class="search-box">
-
-                        <i class="bi bi-search"></i>
-
-                        <input
-                            type="text"
-                            id="searchBook"
-                            placeholder="Buscar por título ou autor...">
-
-                    </div>
-
-                    <div class="category-box">
-
-                        <select id="categoryFilter">
-
-                            <option value="todos">
-                                Todas as categorias
-                            </option>
-
-                            <option value="literatura">
-                                Literatura
-                            </option>
-
-                            <option value="classico">
-                                Clássicos
-                            </option>
-
-                            <option value="fantasia">
-                                Fantasia
-                            </option>
-
-                            <option value="romance">
-                                Romance
-                            </option>
-
-                            <option value="ficcao">
-                                Ficção
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =========================
-                     LIVROS
-                ========================== -->
-
-                <div class="row g-4 catalogo-grid">
-
-
-                    <!-- LIVRO 1 -->
-
-                    <div
-                        class="col-md-6 col-lg-4 book-item"
-                        data-category="literatura"
-                        data-title="O Pequeno Príncipe"
-                        data-author="Antoine de Saint-Exupéry">
-
-                        <div class="catalogo-card">
-
-                            <div class="catalogo-cover">
-
-                                <span>
-                                    Literatura
-                                </span>
-
-                            </div>
-
-                            <div class="catalogo-card-body">
-
-                                <h2>
-                                    O Pequeno Príncipe
-                                </h2>
-
-                                <p class="author">
-                                    Antoine de Saint-Exupéry
-                                </p>
-
-                                <p class="description">
-                                    Uma história sobre amizade,
-                                    descobertas e os valores da vida.
-                                </p>
-
-                                <div class="book-info">
-
-                                    <strong>
-                                        R$ 39,90
-                                    </strong>
-
-                                    <a href="detalhes-livro.html" class="btn btn-primary">
-                                        Ver detalhes
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- LIVRO 2 -->
-
-                    <div
-                        class="col-md-6 col-lg-4 book-item"
-                        data-category="classico"
-                        data-title="Dom Casmurro"
-                        data-author="Machado de Assis">
-
-                        <div class="catalogo-card">
-
-                            <div class="catalogo-cover">
-
-                                <span>
-                                    Clássico
-                                </span>
-
-                            </div>
-
-                            <div class="catalogo-card-body">
-
-                                <h2>
-                                    Dom Casmurro
-                                </h2>
-
-                                <p class="author">
-                                    Machado de Assis
-                                </p>
-
-                                <p class="description">
-                                    Um dos maiores clássicos da
-                                    literatura brasileira.
-                                </p>
-
-                                <div class="book-info">
-
-                                    <strong>
-                                        R$ 34,90
-                                    </strong>
-
-                                    <a href="detalhes-livro.html" class="btn btn-primary">
-                                        Ver detalhes
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- LIVRO 3 -->
-
-                    <div
-                        class="col-md-6 col-lg-4 book-item"
-                        data-category="fantasia"
-                        data-title="Harry Potter"
-                        data-author="J. K. Rowling">
-
-                        <div class="catalogo-card">
-
-                            <div class="catalogo-cover">
-
-                                <span>
-                                    Fantasia
-                                </span>
-
-                            </div>
-
-                            <div class="catalogo-card-body">
-
-                                <h2>
-                                    Harry Potter
-                                </h2>
-
-                                <p class="author">
-                                    J. K. Rowling
-                                </p>
-
-                                <p class="description">
-                                    Uma aventura mágica repleta
-                                    de mistérios e descobertas.
-                                </p>
-
-                                <div class="book-info">
-
-                                    <strong>
-                                        R$ 49,90
-                                    </strong>
-
-                                    <a href="detalhes-livro.html" class="btn btn-primary">
-                                        Ver detalhes
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- LIVRO 4 -->
-
-                    <div
-                        class="col-md-6 col-lg-4 book-item"
-                        data-category="romance"
-                        data-title="Orgulho e Preconceito"
-                        data-author="Jane Austen">
-
-                        <div class="catalogo-card">
-
-                            <div class="catalogo-cover">
-
-                                <span>
-                                    Romance
-                                </span>
-
-                            </div>
-
-                            <div class="catalogo-card-body">
-
-                                <h2>
-                                    Orgulho e Preconceito
-                                </h2>
-
-                                <p class="author">
-                                    Jane Austen
-                                </p>
-
-                                <p class="description">
-                                    Uma história sobre relações,
-                                    escolhas e diferenças sociais.
-                                </p>
-
-                                <div class="book-info">
-
-                                    <strong>
-                                        R$ 42,90
-                                    </strong>
-
-                                    <a href="detalhes-livro.html" class="btn btn-primary">
-                                        Ver detalhes
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- LIVRO 5 -->
-
-                    <div
-                        class="col-md-6 col-lg-4 book-item"
-                        data-category="ficcao"
-                        data-title="1984"
-                        data-author="George Orwell">
-
-                        <div class="catalogo-card">
-
-                            <div class="catalogo-cover">
-
-                                <span>
-                                    Ficção
-                                </span>
-
-                            </div>
-
-                            <div class="catalogo-card-body">
-
-                                <h2>
-                                    1984
-                                </h2>
-
-                                <p class="author">
-                                    George Orwell
-                                </p>
-
-                                <p class="description">
-                                    Uma obra marcante sobre sociedade,
-                                    controle e liberdade.
-                                </p>
-
-                                <div class="book-info">
-
-                                    <strong>
-                                        R$ 44,90
-                                    </strong>
-
-                                    <a href="detalhes-livro.html" class="btn btn-primary">
-                                        Ver detalhes
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- LIVRO 6 -->
-
-                    <div
-                        class="col-md-6 col-lg-4 book-item"
-                        data-category="literatura"
-                        data-title="A Menina que Roubava Livros"
-                        data-author="Markus Zusak">
-
-                        <div class="catalogo-card">
-
-                            <div class="catalogo-cover">
-
-                                <span>
-                                    Literatura
-                                </span>
-
-                            </div>
-
-                            <div class="catalogo-card-body">
-
-                                <h2>
-                                    A Menina que Roubava Livros
-                                </h2>
-
-                                <p class="author">
-                                    Markus Zusak
-                                </p>
-
-                                <p class="description">
-                                    Uma narrativa sobre livros,
-                                    esperança e humanidade.
-                                </p>
-
-                                <div class="book-info">
-
-                                    <strong>
-                                        R$ 46,90
-                                    </strong>
-
-                                    <a href="detalhes-livro.html" class="btn btn-primary">
-                                        Ver detalhes
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- NENHUM RESULTADO -->
-
-                <div id="noResults" class="no-results">
-
-                    <i class="bi bi-search"></i>
-
-                    <p>
-                        Nenhum livro encontrado.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         RODAPÉ
-    ========================== -->
-
-    <footer class="catalogo-footer">
-
-        <div class="container text-center">
+            <h1>Encontre sua próxima história</h1>
 
             <p>
-                © 2026 B-Sync • Sistema de Gerenciamento para Livrarias
+                Explore nosso catálogo e encontre livros para
+                diferentes momentos, estilos e interesses.
             </p>
 
         </div>
+    </section>
 
+
+    <!-- CATÁLOGO -->
+    <main class="catalogo-content">
+        <div class="container">
+
+            <!-- BUSCA E FILTRO -->
+            <div class="catalogo-tools">
+
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input
+                        type="text"
+                        id="searchBook"
+                        placeholder="Buscar por título ou autor...">
+                </div>
+
+                <div class="category-box">
+                    <select id="categoryFilter">
+                        <option value="todos">Todas as categorias</option>
+                        <option value="literatura">Literatura</option>
+                        <option value="classico">Clássicos</option>
+                        <option value="fantasia">Fantasia</option>
+                        <option value="romance">Romance</option>
+                        <option value="ficcao">Ficção</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <!-- LIVROS -->
+            <div class="row g-4 catalogo-grid">
+
+                <!-- LIVRO 1 -->
+                <div class="col-md-6 col-lg-4 book-item"
+                    data-category="literatura"
+                    data-title="O Pequeno Príncipe"
+                    data-author="Antoine de Saint-Exupéry">
+
+                    <div class="catalogo-card">
+
+                        <div class="catalogo-cover">
+                            <span>Literatura</span>
+                        </div>
+
+                        <div class="catalogo-card-body">
+                            <h2>O Pequeno Príncipe</h2>
+
+                            <p class="author">
+                                Antoine de Saint-Exupéry
+                            </p>
+
+                            <p class="description">
+                                Uma história sobre amizade,
+                                descobertas e os valores da vida.
+                            </p>
+
+                            <div class="book-info">
+                                <strong>R$ 39,90</strong>
+
+                                <a href="detalhes-livro.html?livro=pequeno-principe"
+                                   class="btn btn-primary">
+                                    Ver detalhes
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- LIVRO 2 -->
+                <div class="col-md-6 col-lg-4 book-item"
+                    data-category="classico"
+                    data-title="Dom Casmurro"
+                    data-author="Machado de Assis">
+
+                    <div class="catalogo-card">
+
+                        <div class="catalogo-cover">
+                            <span>Clássico</span>
+                        </div>
+
+                        <div class="catalogo-card-body">
+                            <h2>Dom Casmurro</h2>
+
+                            <p class="author">Machado de Assis</p>
+
+                            <p class="description">
+                                Um dos maiores clássicos da
+                                literatura brasileira.
+                            </p>
+
+                            <div class="book-info">
+                                <strong>R$ 34,90</strong>
+
+                                <a href="detalhes-livro.html?livro=dom-casmurro"
+                                   class="btn btn-primary">
+                                    Ver detalhes
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- LIVRO 3 -->
+                <div class="col-md-6 col-lg-4 book-item"
+                    data-category="fantasia"
+                    data-title="Harry Potter"
+                    data-author="J. K. Rowling">
+
+                    <div class="catalogo-card">
+
+                        <div class="catalogo-cover">
+                            <span>Fantasia</span>
+                        </div>
+
+                        <div class="catalogo-card-body">
+                            <h2>Harry Potter</h2>
+
+                            <p class="author">J. K. Rowling</p>
+
+                            <p class="description">
+                                Uma aventura mágica repleta
+                                de mistérios e descobertas.
+                            </p>
+
+                            <div class="book-info">
+                                <strong>R$ 49,90</strong>
+
+                                <a href="detalhes-livro.html?livro=harry-potter"
+                                   class="btn btn-primary">
+                                    Ver detalhes
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- LIVRO 4 -->
+                <div class="col-md-6 col-lg-4 book-item"
+                    data-category="romance"
+                    data-title="Orgulho e Preconceito"
+                    data-author="Jane Austen">
+
+                    <div class="catalogo-card">
+
+                        <div class="catalogo-cover">
+                            <span>Romance</span>
+                        </div>
+
+                        <div class="catalogo-card-body">
+                            <h2>Orgulho e Preconceito</h2>
+
+                            <p class="author">Jane Austen</p>
+
+                            <p class="description">
+                                Uma história sobre relações,
+                                escolhas e diferenças sociais.
+                            </p>
+
+                            <div class="book-info">
+                                <strong>R$ 42,90</strong>
+
+                                <a href="detalhes-livro.html?livro=orgulho-preconceito"
+                                   class="btn btn-primary">
+                                    Ver detalhes
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- LIVRO 5 -->
+                <div class="col-md-6 col-lg-4 book-item"
+                    data-category="ficcao"
+                    data-title="1984"
+                    data-author="George Orwell">
+
+                    <div class="catalogo-card">
+
+                        <div class="catalogo-cover">
+                            <span>Ficção</span>
+                        </div>
+
+                        <div class="catalogo-card-body">
+                            <h2>1984</h2>
+
+                            <p class="author">George Orwell</p>
+
+                            <p class="description">
+                                Uma obra marcante sobre sociedade,
+                                controle e liberdade.
+                            </p>
+
+                            <div class="book-info">
+                                <strong>R$ 44,90</strong>
+
+                                <a href="detalhes-livro.html?livro=1984"
+                                   class="btn btn-primary">
+                                    Ver detalhes
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- LIVRO 6 -->
+                <div class="col-md-6 col-lg-4 book-item"
+                    data-category="literatura"
+                    data-title="A Menina que Roubava Livros"
+                    data-author="Markus Zusak">
+
+                    <div class="catalogo-card">
+
+                        <div class="catalogo-cover">
+                            <span>Literatura</span>
+                        </div>
+
+                        <div class="catalogo-card-body">
+                            <h2>A Menina que Roubava Livros</h2>
+
+                            <p class="author">Markus Zusak</p>
+
+                            <p class="description">
+                                Uma narrativa sobre livros,
+                                esperança e humanidade.
+                            </p>
+
+                            <div class="book-info">
+                                <strong>R$ 46,90</strong>
+
+                                <a href="detalhes-livro.html?livro=menina-roubava-livros"
+                                   class="btn btn-primary">
+                                    Ver detalhes
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- NENHUM RESULTADO -->
+            <div id="noResults" class="no-results">
+                <i class="bi bi-search"></i>
+                <p>Nenhum livro encontrado.</p>
+            </div>
+
+        </div>
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer class="catalogo-footer">
+        <div class="container text-center">
+            <p>© 2026 B-Sync • Sistema de Gerenciamento para Livrarias</p>
+        </div>
     </footer>
 
 
-    <!-- Bootstrap JS -->
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
-    </script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 
     <!-- Busca e filtro -->
-
     <script>
-
         const searchInput = document.getElementById("searchBook");
         const categoryFilter = document.getElementById("categoryFilter");
         const books = document.querySelectorAll(".book-item");
         const noResults = document.getElementById("noResults");
 
         function filterBooks() {
-
             const search = searchInput.value.toLowerCase();
             const category = categoryFilter.value;
-
             let visibleBooks = 0;
 
             books.forEach(book => {
-
                 const title = book.dataset.title.toLowerCase();
                 const author = book.dataset.author.toLowerCase();
                 const bookCategory = book.dataset.category;
 
                 const matchesSearch =
-                    title.includes(search) ||
-                    author.includes(search);
+                    title.includes(search) || author.includes(search);
 
                 const matchesCategory =
-                    category === "todos" ||
-                    bookCategory === category;
+                    category === "todos" || bookCategory === category;
 
-                if (matchesSearch && matchesCategory) {
+                const visible = matchesSearch && matchesCategory;
 
-                    book.style.display = "";
+                book.style.display = visible ? "" : "none";
 
-                    visibleBooks++;
-
-                } else {
-
-                    book.style.display = "none";
-
-                }
-
+                if (visible) visibleBooks++;
             });
 
             noResults.style.display =
@@ -599,11 +397,8 @@
         }
 
         searchInput.addEventListener("input", filterBooks);
-
         categoryFilter.addEventListener("change", filterBooks);
-
     </script>
 
 </body>
-
 </html>
