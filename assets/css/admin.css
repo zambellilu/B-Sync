@@ -479,3 +479,29 @@ body {
         grid-template-columns:1fr;
     }
 }
+
+.empty-books {
+    text-align: center;
+    padding: 40px 20px;
+    color: #777;
+}
+
+.empty-books i {
+    font-size: 36px;
+    color: #8B78A8;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.empty-books p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #5A3E85;
+    margin-bottom: 6px;
+}
+
+.empty-books span {
+    font-size: 13px;
+    color: #888;
+}
