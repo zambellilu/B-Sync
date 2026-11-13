@@ -28,3 +28,17 @@ Agradeço pela compreenção e peço desculpas pelo atraso, acabo me enrolando m
 
 Abraços!
 
+Login normal: mantém a sessão enquanto o navegador estiver aberto.
+
+
+
+Lembrar de mim: cria um token seguro com validade de 30 dias.
+
+
+
+Ao retornar, o sistema verifica o token e recupera a sessão automaticamente.
+
+
+
+Ao sair da conta, o token persistente também será revogado.
+
