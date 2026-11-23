@@ -1,4 +1,3 @@
-
 <?php
 $cookieName = 'bsync_remember';
 $cookiePath = rtrim(dirname(dirname($_SERVER['SCRIPT_NAME'])), '/') . '/';
@@ -29,9 +28,9 @@ function bsyncDefinirSessao($usuario)
 function bsyncRedirecionar($tipo)
 {
     if ($tipo === 'admin') {
-        header('Location: ../admin/dashboard.html');
+        header('Location: ../admin/dashboard.php');
     } else {
-        header('Location: dashboard.html');
+        header('Location: dashboard.php');
     }
 
     exit;

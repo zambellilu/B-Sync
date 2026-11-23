@@ -1,4 +1,11 @@
 
+<?php
+require_once __DIR__ . '/../includes/protecao.php';
+bsyncExigirUsuario();
+
+$nome = $_SESSION['usuario_nome'];
+$email = $_SESSION['usuario_email'];
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -11,6 +18,7 @@
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Bootstrap -->
@@ -27,10 +35,7 @@
 
 <body class="user-page">
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
-
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg user-navbar">
 
         <div class="container">
@@ -53,31 +58,31 @@
                 <ul class="navbar-nav ms-auto align-items-lg-center">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">
+                        <a class="nav-link" href="dashboard.php">
                             Início
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="reservas.html">
+                        <a class="nav-link" href="reservas.php">
                             Reservas
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="pedidos.html">
+                        <a class="nav-link" href="pedidos.php">
                             Pedidos
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="perfil.html">
+                        <a class="nav-link active" href="perfil.php">
                             Perfil
                         </a>
                     </li>
 
                     <li class="nav-item ms-lg-3">
-                        <a href="login.html" class="btn btn-primary">
+                        <a href="logout.php" class="btn btn-primary">
                             Sair
                         </a>
                     </li>
@@ -90,11 +95,7 @@
 
     </nav>
 
-
-    <!-- =========================
-         PERFIL
-    ========================== -->
-
+    <!-- PERFIL -->
     <main class="user-content">
 
         <div class="container">
@@ -113,11 +114,9 @@
 
             </div>
 
-
             <div class="profile-container">
 
                 <!-- CABEÇALHO DO PERFIL -->
-
                 <div class="profile-header">
 
                     <div class="profile-avatar">
@@ -127,11 +126,11 @@
                     <div>
 
                         <h2>
-                            Nome do Usuário
+                            <?= htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') ?>
                         </h2>
 
                         <p>
-                            usuario@email.com
+                            <?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>
                         </p>
 
                         <span class="status status-active">
@@ -142,9 +141,7 @@
 
                 </div>
 
-
                 <!-- INFORMAÇÕES -->
-
                 <div class="profile-section">
 
                     <h3>
@@ -164,12 +161,12 @@
                                 <input
                                     type="text"
                                     id="nome"
-                                    value="Nome do Usuário">
+                                    value="<?= htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') ?>"
+                                    readonly>
 
                             </div>
 
                         </div>
-
 
                         <div class="col-md-6">
 
@@ -182,12 +179,12 @@
                                 <input
                                     type="email"
                                     id="email"
-                                    value="usuario@email.com">
+                                    value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>"
+                                    readonly>
 
                             </div>
 
                         </div>
-
 
                         <div class="col-md-6">
 
@@ -200,12 +197,12 @@
                                 <input
                                     type="tel"
                                     id="telefone"
-                                    value="(51) 99999-9999">
+                                    value="(51) 99999-9999"
+                                    readonly>
 
                             </div>
 
                         </div>
-
 
                         <div class="col-md-6">
 
@@ -218,7 +215,8 @@
                                 <input
                                     type="text"
                                     id="cidade"
-                                    value="Taquara">
+                                    value="Taquara"
+                                    readonly>
 
                             </div>
 
@@ -228,9 +226,7 @@
 
                 </div>
 
-
                 <!-- ATIVIDADE -->
-
                 <div class="profile-section">
 
                     <h3>
@@ -245,18 +241,13 @@
 
                                 <i class="bi bi-bookmark"></i>
 
-                                <strong>
-                                    2
-                                </strong>
+                                <strong>2</strong>
 
-                                <span>
-                                    Reservas
-                                </span>
+                                <span>Reservas</span>
 
                             </div>
 
                         </div>
-
 
                         <div class="col-md-4">
 
@@ -264,18 +255,13 @@
 
                                 <i class="bi bi-bag"></i>
 
-                                <strong>
-                                    1
-                                </strong>
+                                <strong>1</strong>
 
-                                <span>
-                                    Pedidos
-                                </span>
+                                <span>Pedidos</span>
 
                             </div>
 
                         </div>
-
 
                         <div class="col-md-4">
 
@@ -283,13 +269,9 @@
 
                                 <i class="bi bi-check-circle"></i>
 
-                                <strong>
-                                    3
-                                </strong>
+                                <strong>3</strong>
 
-                                <span>
-                                    Concluídos
-                                </span>
+                                <span>Concluídos</span>
 
                             </div>
 
@@ -299,18 +281,12 @@
 
                 </div>
 
-
                 <!-- AÇÕES -->
-
                 <div class="profile-actions">
 
-                    <a href="dashboard.html" class="btn btn-outline-primary">
+                    <a href="dashboard.php" class="btn btn-outline-primary">
                         Voltar
                     </a>
-
-                    <button type="button" class="user-btn">
-                        Salvar alterações
-                    </button>
 
                 </div>
 
@@ -320,21 +296,15 @@
 
     </main>
 
-
-    <!-- =========================
-         RODAPÉ
-    ========================== -->
-
+    <!-- RODAPÉ -->
     <footer class="user-footer">
 
         © 2026 B-Sync • Sistema de Gerenciamento para Livrarias
 
     </footer>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
 </html>
-

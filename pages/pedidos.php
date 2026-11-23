@@ -1,3 +1,8 @@
+
+<?php
+require_once __DIR__ . '/../includes/protecao.php';
+bsyncExigirUsuario();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -18,6 +23,7 @@
 
 <body class="user-page">
 
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg user-navbar">
 
         <div class="container">
@@ -26,25 +32,41 @@
                 <img src="../assets/img/logo.png" alt="B-Sync">
             </a>
 
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="menu">
 
                 <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reservas.html">Reservas</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="pedidos.html">Pedidos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="perfil.html">Perfil</a></li>
-                    <li class="nav-item ms-lg-3"><a class="btn btn-primary" href="login.html">Sair</a></li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.php">Início</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="reservas.php">Reservas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pedidos.php">Pedidos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="perfil.php">Perfil</a>
+                    </li>
+
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary" href="logout.php">Sair</a>
+                    </li>
+
                 </ul>
 
             </div>
         </div>
     </nav>
 
-
+    <!-- CONTEÚDO -->
     <main class="user-content">
 
         <div class="container">
@@ -99,10 +121,13 @@
 
     </main>
 
-
+    <!-- RODAPÉ -->
     <footer class="user-footer">
         © 2026 B-Sync • Sistema de Gerenciamento para Livrarias
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

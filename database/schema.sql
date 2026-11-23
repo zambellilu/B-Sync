@@ -62,3 +62,15 @@ CREATE TABLE IF NOT EXISTS reservas (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY (livro_id) REFERENCES livros(id)
 );
+
+CREATE TABLE IF NOT EXISTS lembrar_login (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    selector CHAR(24) NOT NULL UNIQUE,
+    token_hash CHAR(64) NOT NULL,
+    expira_em DATETIME NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id)
+        REFERENCES usuarios(id)
+        ON DELETE CASCADE
+);

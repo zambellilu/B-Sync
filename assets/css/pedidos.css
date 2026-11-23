@@ -1,0 +1,345 @@
+/* INDICADORES */
+
+.order-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.order-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 19px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.order-stat-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F0EBF6;
+    color: var(--purple);
+    font-size: 1.3rem;
+}
+
+.order-stat span {
+    display: block;
+    color: var(--light-text);
+    font-size: .82rem;
+}
+
+.order-stat strong {
+    display: block;
+    font-size: 1.5rem;
+}
+
+/* FILTRO E CABEÇALHO */
+
+.order-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.order-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-filter select,
+.order-update select {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    font: inherit;
+    font-size: .85rem;
+}
+
+.order-filter select {
+    min-width: 190px;
+}
+
+/* LISTAGEM DE PEDIDOS */
+
+.orders-container {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.orders-header {
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.orders-header h2 {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+}
+
+.orders-header p {
+    margin: 0;
+    color: var(--light-text);
+    font-size: .85rem;
+}
+
+.order-card {
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.order-card:last-child {
+    border-bottom: 0;
+}
+
+/* INFORMAÇÕES DO PEDIDO */
+
+.order-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 16px;
+}
+
+.order-number {
+    color: var(--purple);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.order-date {
+    margin-top: 4px;
+    color: var(--light-text);
+    font-size: .8rem;
+}
+
+.order-user {
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.order-email {
+    color: var(--light-text);
+    font-size: .8rem;
+    overflow-wrap: anywhere;
+}
+
+/* LIVROS E VALORES */
+
+.order-items {
+    margin-bottom: 15px;
+    padding: 13px 16px;
+    border-radius: 9px;
+    background: #FAF8FC;
+}
+
+.order-book {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 5px 0;
+    font-size: .85rem;
+}
+
+.order-book + .order-book {
+    border-top: 1px solid var(--border);
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: .9rem;
+}
+
+.order-total strong {
+    color: var(--purple);
+    font-size: 1.05rem;
+}
+
+/* STATUS E ATUALIZAÇÃO */
+
+.order-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.order-status {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: .78rem;
+    font-weight: 500;
+}
+
+.order-status.pendente {
+    color: #946200;
+    background: #FFF3CD;
+}
+
+.order-status.em_processamento {
+    color: #285D9B;
+    background: #E5F0FC;
+}
+
+.order-status.concluido {
+    color: #25803D;
+    background: #E8F5EC;
+}
+
+.order-status.cancelado {
+    color: #C84C57;
+    background: #FBEAEC;
+}
+
+.order-update {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.order-update button {
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--purple);
+    color: #fff;
+    font-size: .8rem;
+}
+
+.order-update button:hover {
+    background: #49316D;
+}
+
+/* ESTADO VAZIO */
+
+.order-empty {
+    padding: 45px 20px;
+    text-align: center;
+    color: var(--light-text);
+}
+
+.order-empty i {
+    display: block;
+    margin-bottom: 12px;
+    color: #8B78A8;
+    font-size: 2.3rem;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+    .order-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .order-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .order-top,
+    .order-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .order-update {
+        width: 100%;
+    }
+
+    .order-update select {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .order-filter {
+        width: 100%;
+    }
+
+    .order-filter select {
+        min-width: 0;
+        flex: 1;
+    }
+}
+
+
+/* FILTRO DE PEDIDOS */
+
+.order-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-filter label {
+    margin: 0;
+    color: #5A3E85;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.order-filter select {
+    min-width: 210px;
+    padding: 10px 38px 10px 14px;
+    appearance: none;
+    -webkit-appearance: none;
+    color: #2F2F2F;
+    background-color: #FFFFFF;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235A3E85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    border: 1px solid #DCD3E8;
+    border-radius: 9px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-filter select:hover {
+    border-color: #A995C3;
+}
+
+.order-filter select:focus {
+    border-color: #5A3E85;
+    box-shadow: 0 0 0 3px rgba(90, 62, 133, 0.09);
+}
+
+.order-filter select option {
+    background: #FFFFFF;
+    color: #2F2F2F;
+    padding: 10px;
+}
+
+@media (max-width: 576px) {
+    .order-filter {
+        width: 100%;
+    }
+
+    .order-filter select {
+        flex: 1;
+        min-width: 0;
+    }
+}

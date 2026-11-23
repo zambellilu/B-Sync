@@ -1,0 +1,341 @@
+/* INDICADORES */
+
+.reservation-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.reservation-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 19px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.reservation-stat-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #F0EBF6;
+    color: var(--purple);
+    font-size: 1.3rem;
+}
+
+.reservation-stat span,
+.reservation-stat strong {
+    display: block;
+}
+
+.reservation-stat span {
+    color: var(--light-text);
+    font-size: .82rem;
+}
+
+.reservation-stat strong {
+    font-size: 1.5rem;
+}
+
+/* FILTRO */
+
+.reservation-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.reservation-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reservation-filter select,
+.reservation-update select {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    font: inherit;
+    font-size: .85rem;
+}
+
+.reservation-filter select {
+    min-width: 190px;
+}
+
+/* LISTAGEM */
+
+.reservations-container {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.reservations-header {
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.reservations-header h2 {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+}
+
+.reservations-header p {
+    margin: 0;
+    color: var(--light-text);
+    font-size: .85rem;
+}
+
+.reservation-card {
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.reservation-card:last-child {
+    border-bottom: 0;
+}
+
+/* INFORMAÇÕES */
+
+.reservation-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 16px;
+}
+
+.reservation-number {
+    color: var(--purple);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.reservation-date,
+.reservation-email {
+    color: var(--light-text);
+    font-size: .8rem;
+}
+
+.reservation-date {
+    margin-top: 4px;
+}
+
+.reservation-user {
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.reservation-email {
+    overflow-wrap: anywhere;
+}
+
+/* LIVRO RESERVADO */
+
+.reservation-book {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    border-radius: 9px;
+    background: #FAF8FC;
+    color: var(--purple);
+}
+
+.reservation-book > i {
+    font-size: 1.3rem;
+}
+
+.reservation-book strong,
+.reservation-book span {
+    display: block;
+}
+
+.reservation-book strong {
+    color: var(--text);
+    font-size: .9rem;
+}
+
+.reservation-book span {
+    margin-top: 3px;
+    color: var(--light-text);
+    font-size: .8rem;
+}
+
+/* STATUS */
+
+.reservation-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.reservation-status {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: .78rem;
+    font-weight: 500;
+}
+
+.reservation-status.pendente {
+    color: #946200;
+    background: #FFF3CD;
+}
+
+.reservation-status.confirmada {
+    color: #285D9B;
+    background: #E5F0FC;
+}
+
+.reservation-status.concluida {
+    color: #25803D;
+    background: #E8F5EC;
+}
+
+.reservation-status.cancelada {
+    color: #C84C57;
+    background: #FBEAEC;
+}
+
+.reservation-update {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.reservation-update button {
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--purple);
+    color: #fff;
+    font-size: .8rem;
+}
+
+.reservation-update button:hover {
+    background: #49316D;
+}
+
+/* ESTADO VAZIO */
+
+.reservation-empty {
+    padding: 45px 20px;
+    text-align: center;
+    color: var(--light-text);
+}
+
+.reservation-empty i {
+    display: block;
+    margin-bottom: 12px;
+    color: #8B78A8;
+    font-size: 2.3rem;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+    .reservation-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .reservation-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .reservation-top,
+    .reservation-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .reservation-update,
+    .reservation-filter {
+        width: 100%;
+    }
+
+    .reservation-update select,
+    .reservation-filter select {
+        min-width: 0;
+        flex: 1;
+    }
+}
+
+
+/* FILTRO DE RESERVAS */
+
+.reservation-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reservation-filter label {
+    margin: 0;
+    color: #5A3E85;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.reservation-filter select {
+    min-width: 210px;
+    padding: 10px 38px 10px 14px;
+    appearance: none;
+    -webkit-appearance: none;
+    color: #2F2F2F;
+    background-color: #FFFFFF;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235A3E85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    border: 1px solid #DCD3E8;
+    border-radius: 9px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reservation-filter select:hover {
+    border-color: #A995C3;
+}
+
+.reservation-filter select:focus {
+    border-color: #5A3E85;
+    box-shadow: 0 0 0 3px rgba(90, 62, 133, 0.09);
+}
+
+.reservation-filter select option {
+    background: #FFFFFF;
+    color: #2F2F2F;
+    padding: 10px;
+}
+
+@media (max-width: 576px) {
+    .reservation-filter {
+        width: 100%;
+    }
+
+    .reservation-filter select {
+        flex: 1;
+        min-width: 0;
+    }
+}

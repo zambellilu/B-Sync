@@ -1,4 +1,8 @@
 
+<?php
+require_once __DIR__ . '/../includes/protecao.php';
+bsyncExigirUsuario();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,15 +10,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>B-Sync | Início</title>
+    <title>B-Sync | Reservas</title>
 
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <!-- CSS -->
@@ -47,25 +53,25 @@
                 <ul class="navbar-nav ms-auto align-items-lg-center">
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.html">
+                        <a class="nav-link" href="dashboard.php">
                             Início
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="reservas.html">
+                        <a class="nav-link active" href="reservas.php">
                             Reservas
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="pedidos.html">
+                        <a class="nav-link" href="pedidos.php">
                             Pedidos
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="perfil.html">
+                        <a class="nav-link" href="perfil.php">
                             Perfil
                         </a>
                     </li>
@@ -84,34 +90,28 @@
 
     </nav>
 
-
     <!-- CONTEÚDO -->
     <main class="user-content">
 
         <div class="container">
 
             <!-- TÍTULO -->
-
             <div class="user-title">
 
-                <span>ÁREA DO USUÁRIO</span>
+                <span>MINHAS RESERVAS</span>
 
                 <h1>
-                    Olá, seja bem-vindo!
+                    Livros reservados
                 </h1>
 
                 <p>
-                    Acesse rapidamente suas reservas, pedidos e informações pessoais.
+                    Acompanhe suas reservas e consulte o status de cada livro.
                 </p>
 
             </div>
 
-
             <!-- RESUMO -->
-
-            <div class="row g-4">
-
-                <!-- RESERVAS -->
+            <div class="row g-4 mb-4">
 
                 <div class="col-md-4">
 
@@ -122,70 +122,52 @@
                         </div>
 
                         <h3>
-                            Minhas reservas
+                            Reservas ativas
                         </h3>
 
                         <p>
-                            Consulte os livros que você reservou.
+                            2 reservas em andamento.
                         </p>
-
-                        <a href="reservas.html" class="user-btn d-inline-block mt-3 text-decoration-none">
-                            Ver reservas
-                        </a>
 
                     </div>
 
                 </div>
-
-
-                <!-- PEDIDOS -->
 
                 <div class="col-md-4">
 
                     <div class="user-card">
 
                         <div class="user-icon">
-                            <i class="bi bi-bag"></i>
+                            <i class="bi bi-clock"></i>
                         </div>
 
                         <h3>
-                            Meus pedidos
+                            Aguardando
                         </h3>
 
                         <p>
-                            Acompanhe seus pedidos e seus status.
+                            1 reserva aguardando disponibilidade.
                         </p>
-
-                        <a href="pedidos.html" class="user-btn d-inline-block mt-3 text-decoration-none">
-                            Ver pedidos
-                        </a>
 
                     </div>
 
                 </div>
-
-
-                <!-- PERFIL -->
 
                 <div class="col-md-4">
 
                     <div class="user-card">
 
                         <div class="user-icon">
-                            <i class="bi bi-person"></i>
+                            <i class="bi bi-check-circle"></i>
                         </div>
 
                         <h3>
-                            Meu perfil
+                            Concluídas
                         </h3>
 
                         <p>
-                            Consulte e atualize seus dados pessoais.
+                            3 reservas já finalizadas.
                         </p>
-
-                        <a href="perfil.html" class="user-btn d-inline-block mt-3 text-decoration-none">
-                            Ver perfil
-                        </a>
 
                     </div>
 
@@ -193,68 +175,63 @@
 
             </div>
 
+            <!-- TABELA -->
+            <div class="user-table">
 
-            <!-- ACESSO RÁPIDO -->
+                <div class="p-4">
 
-            <div class="user-title mt-5 mb-4">
+                    <h2 class="mb-3"
+                        style="font: 700 1.4rem 'Playfair Display', serif; color: #5A3E85;">
+                        Minhas reservas
+                    </h2>
 
-                <span>ACESSO RÁPIDO</span>
+                    <div class="table-responsive">
 
-                <h2>
-                    Encontre o que precisa
-                </h2>
+                        <table class="table table-hover align-middle">
 
-            </div>
+                            <thead>
+                                <tr>
+                                    <th>Livro</th>
+                                    <th>Data da reserva</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
 
+                            <tbody>
 
-            <div class="row g-4">
+                                <tr>
+                                    <td>O Pequeno Príncipe</td>
+                                    <td>20/08/2026</td>
+                                    <td>
+                                        <span class="status status-active">
+                                            Ativa
+                                        </span>
+                                    </td>
+                                </tr>
 
-                <div class="col-md-6">
+                                <tr>
+                                    <td>Dom Casmurro</td>
+                                    <td>18/08/2026</td>
+                                    <td>
+                                        <span class="status status-pending">
+                                            Aguardando
+                                        </span>
+                                    </td>
+                                </tr>
 
-                    <div class="user-card">
+                                <tr>
+                                    <td>Harry Potter</td>
+                                    <td>10/08/2026</td>
+                                    <td>
+                                        <span class="status status-finished">
+                                            Concluída
+                                        </span>
+                                    </td>
+                                </tr>
 
-                        <div class="user-icon">
-                            <i class="bi bi-book"></i>
-                        </div>
+                            </tbody>
 
-                        <h3>
-                            Explorar catálogo
-                        </h3>
-
-                        <p>
-                            Confira os livros disponíveis na livraria.
-                        </p>
-
-                        <a href="catalogo.html"
-                           class="user-btn d-inline-block mt-3 text-decoration-none">
-                            Ver catálogo
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-6">
-
-                    <div class="user-card">
-
-                        <div class="user-icon">
-                            <i class="bi bi-house"></i>
-                        </div>
-
-                        <h3>
-                            Página inicial
-                        </h3>
-
-                        <p>
-                            Volte para a página principal do B-Sync.
-                        </p>
-
-                        <a href="../index.html"
-                           class="user-btn d-inline-block mt-3 text-decoration-none">
-                            Ir para início
-                        </a>
+                        </table>
 
                     </div>
 
@@ -266,21 +243,14 @@
 
     </main>
 
-
     <!-- RODAPÉ -->
-
     <footer class="user-footer">
-
         © 2026 B-Sync • Sistema de Gerenciamento para Livrarias
-
     </footer>
 
-
     <!-- Bootstrap JS -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
 </html>
-

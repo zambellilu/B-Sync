@@ -1,91 +1,126 @@
-
-
-
 <?php
+require_once __DIR__ . '/../includes/protecao.php';
+bsyncExigirAdmin();
+
 require_once __DIR__ . '/../includes/conexao.php';
 
+$tokenCSRF = bsyncTokenCSRF();
 $mensagem = '';
 $erro = '';
 
+function bsyncEscapar($valor)
+{
+    return htmlspecialchars((string) $valor, ENT_QUOTES, 'UTF-8');
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $acao = $_POST['acao'] ?? '';
-    $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
-
-    if ($acao === 'excluir') {
-        if (!$id) {
-            $erro = 'Livro inválido.';
-        } else {
-            $stmt = $conexao->prepare('DELETE FROM livros WHERE id = :id');
-            $stmt->execute([':id' => $id]);
-
-            header('Location: livros.php?excluido=1');
-            exit;
-        }
+    if (!bsyncValidarCSRF($_POST['csrf_token'] ?? '')) {
+        http_response_code(403);
+        exit('Solicitação inválida. Atualize a página e tente novamente.');
     }
 
-    if ($acao === 'cadastrar' || $acao === 'editar') {
-        $titulo = trim($_POST['titulo'] ?? '');
-        $autor = trim($_POST['autor'] ?? '');
-        $categoria = trim($_POST['categoria'] ?? '');
-        $preco = $_POST['preco'] ?? '';
-        $disponibilidade = $_POST['disponibilidade'] ?? 'disponivel';
+    $acao = $_POST['acao'] ?? '';
+    $id = filter_var($_POST['id'] ?? null, FILTER_VALIDATE_INT);
 
-        if (
-            $titulo === '' ||
-            $autor === '' ||
-            $categoria === '' ||
-            !is_numeric($preco) ||
-            (float) $preco < 0 ||
-            !in_array($disponibilidade, ['disponivel', 'indisponivel'], true)
-        ) {
-            $erro = 'Preencha os campos corretamente.';
-        } elseif ($acao === 'editar' && !$id) {
-            $erro = 'Livro inválido.';
-        } else {
-            if ($acao === 'cadastrar') {
-                $sql = 'INSERT INTO livros
-                        (titulo, autor, categoria, preco, disponibilidade)
-                        VALUES (:titulo, :autor, :categoria, :preco, :disponibilidade)';
-
-                $mensagemSucesso = 'Livro cadastrado com sucesso!';
+    try {
+        if ($acao === 'excluir') {
+            if (!$id || $id <= 0) {
+                $erro = 'Livro inválido.';
             } else {
-                $sql = 'UPDATE livros
-                        SET titulo = :titulo,
-                            autor = :autor,
-                            categoria = :categoria,
-                            preco = :preco,
-                            disponibilidade = :disponibilidade
-                        WHERE id = :id';
+                $stmt = $conexao->prepare('DELETE FROM livros WHERE id = :id');
+                $stmt->execute([':id' => $id]);
 
-                $mensagemSucesso = 'Livro atualizado com sucesso!';
+                if ($stmt->rowCount() > 0) {
+                    header('Location: livros.php?mensagem=' . urlencode('Livro excluído com sucesso!'));
+                    exit;
+                }
+
+                $erro = 'Livro não encontrado.';
             }
+        } elseif ($acao === 'cadastrar' || $acao === 'editar') {
+            $titulo = trim($_POST['titulo'] ?? '');
+            $autor = trim($_POST['autor'] ?? '');
+            $categoria = trim($_POST['categoria'] ?? '');
+            $preco = trim($_POST['preco'] ?? '');
+            $disponibilidade = $_POST['disponibilidade'] ?? '';
 
-            $stmt = $conexao->prepare($sql);
+            $precoValido = preg_match('/^\d{1,8}(?:\.\d{1,2})?$/D', $preco);
 
-            $dados = [
-                ':titulo' => $titulo,
-                ':autor' => $autor,
-                ':categoria' => $categoria,
-                ':preco' => $preco,
-                ':disponibilidade' => $disponibilidade
-            ];
+            if (
+                $titulo === '' ||
+                mb_strlen($titulo) > 200 ||
+                $autor === '' ||
+                mb_strlen($autor) > 150 ||
+                $categoria === '' ||
+                mb_strlen($categoria) > 100 ||
+                !$precoValido ||
+                !in_array($disponibilidade, ['disponivel', 'indisponivel'], true)
+            ) {
+                $erro = 'Preencha os campos corretamente. Confira os limites de caracteres e o preço.';
+            } elseif ($acao === 'editar' && (!$id || $id <= 0)) {
+                $erro = 'Livro inválido.';
+            } else {
+                if ($acao === 'editar') {
+                    $verificar = $conexao->prepare('SELECT id FROM livros WHERE id = :id');
+                    $verificar->execute([':id' => $id]);
 
-            if ($acao === 'editar') {
-                $dados[':id'] = $id;
+                    if (!$verificar->fetch()) {
+                        $erro = 'O livro que você tentou editar não foi encontrado.';
+                    }
+                }
+
+                if ($erro === '') {
+                    $dados = [
+                        ':titulo' => $titulo,
+                        ':autor' => $autor,
+                        ':categoria' => $categoria,
+                        ':preco' => number_format((float) $preco, 2, '.', ''),
+                        ':disponibilidade' => $disponibilidade
+                    ];
+
+                    if ($acao === 'cadastrar') {
+                        $sql = 'INSERT INTO livros
+                                (titulo, autor, categoria, preco, disponibilidade)
+                                VALUES
+                                (:titulo, :autor, :categoria, :preco, :disponibilidade)';
+
+                        $mensagemSucesso = 'Livro cadastrado com sucesso!';
+                    } else {
+                        $sql = 'UPDATE livros
+                                SET titulo = :titulo,
+                                    autor = :autor,
+                                    categoria = :categoria,
+                                    preco = :preco,
+                                    disponibilidade = :disponibilidade
+                                WHERE id = :id';
+
+                        $dados[':id'] = $id;
+                        $mensagemSucesso = 'Livro atualizado com sucesso!';
+                    }
+
+                    $stmt = $conexao->prepare($sql);
+                    $stmt->execute($dados);
+
+                    header('Location: livros.php?mensagem=' . urlencode($mensagemSucesso));
+                    exit;
+                }
             }
+        } else {
+            $erro = 'Ação inválida.';
+        }
+    } catch (PDOException $e) {
+        error_log('Erro ao gerenciar livros: ' . $e->getMessage());
 
-            $stmt->execute($dados);
-
-            header('Location: livros.php?mensagem=' . urlencode($mensagemSucesso));
-            exit;
+        if ($acao === 'excluir') {
+            $erro = 'Não foi possível excluir este livro. Ele pode estar vinculado a pedidos ou reservas.';
+        } else {
+            $erro = 'Não foi possível salvar o livro. Tente novamente.';
         }
     }
 }
 
 if (isset($_GET['mensagem'])) {
-    $mensagem = $_GET['mensagem'];
-} elseif (isset($_GET['excluido'])) {
-    $mensagem = 'Livro excluído com sucesso!';
+    $mensagem = trim($_GET['mensagem']);
 }
 
 $consulta = $conexao->query(
@@ -122,7 +157,7 @@ $livros = $consulta->fetchAll();
 
     <aside class="admin-sidebar">
 
-        <a href="dashboard.html" class="admin-logo">
+        <a href="dashboard.php" class="admin-logo">
             <img src="../assets/img/logo.png" alt="B-Sync">
         </a>
 
@@ -131,13 +166,13 @@ $livros = $consulta->fetchAll();
                 <i class="bi bi-person"></i>
             </div>
             <div>
-                <strong>Administrador</strong>
+                <strong><?= bsyncEscapar($_SESSION['usuario_nome'] ?? 'Administrador') ?></strong>
                 <small>Área administrativa</small>
             </div>
         </div>
 
         <nav class="admin-menu">
-            <a href="dashboard.html">
+            <a href="dashboard.php">
                 <i class="bi bi-grid-1x2"></i>
                 <span>Dashboard</span>
             </a>
@@ -147,22 +182,22 @@ $livros = $consulta->fetchAll();
                 <span>Livros</span>
             </a>
 
-            <a href="pedidos.html">
+            <a href="pedidos.php">
                 <i class="bi bi-bag"></i>
                 <span>Pedidos</span>
             </a>
 
-            <a href="reservas.html">
+            <a href="reservas.php">
                 <i class="bi bi-calendar-check"></i>
                 <span>Reservas</span>
             </a>
 
-            <a href="usuarios.html">
+            <a href="usuarios.php">
                 <i class="bi bi-people"></i>
                 <span>Usuários</span>
             </a>
 
-            <a href="relatorios.html">
+            <a href="relatorios.php">
                 <i class="bi bi-bar-chart"></i>
                 <span>Relatórios</span>
             </a>
@@ -174,7 +209,7 @@ $livros = $consulta->fetchAll();
                 <span>Voltar ao início</span>
             </a>
 
-            <a href="../pages/login.html">
+            <a href="../pages/logout.php">
                 <i class="bi bi-box-arrow-left"></i>
                 <span>Sair</span>
             </a>
@@ -186,13 +221,13 @@ $livros = $consulta->fetchAll();
 
         <?php if ($mensagem !== ''): ?>
             <div class="alert alert-success">
-                <?= htmlspecialchars($mensagem) ?>
+                <?= bsyncEscapar($mensagem) ?>
             </div>
         <?php endif; ?>
 
         <?php if ($erro !== ''): ?>
             <div class="alert alert-danger">
-                <?= htmlspecialchars($erro) ?>
+                <?= bsyncEscapar($erro) ?>
             </div>
         <?php endif; ?>
 
@@ -227,11 +262,13 @@ $livros = $consulta->fetchAll();
             </div>
 
             <?php if (empty($livros)): ?>
+
                 <div class="empty-books">
-    <i class="bi bi-book"></i>
-    <p>Nenhum livro cadastrado.</p>
-    <span>Adicione um livro para começar a organizar seu catálogo.</span>
-</div>
+                    <i class="bi bi-book"></i>
+                    <p>Nenhum livro cadastrado.</p>
+                    <span>Adicione um livro para começar a organizar seu catálogo.</span>
+                </div>
+
             <?php else: ?>
 
                 <div id="listaLivros">
@@ -245,10 +282,10 @@ $livros = $consulta->fetchAll();
                             </div>
 
                             <div class="book-info">
-                                <h3><?= htmlspecialchars($livro['titulo']) ?></h3>
-                                <p><?= htmlspecialchars($livro['autor']) ?></p>
+                                <h3><?= bsyncEscapar($livro['titulo']) ?></h3>
+                                <p><?= bsyncEscapar($livro['autor']) ?></p>
                                 <span class="book-category">
-                                    <?= htmlspecialchars($livro['categoria']) ?>
+                                    <?= bsyncEscapar($livro['categoria']) ?>
                                 </span>
                             </div>
 
@@ -266,28 +303,27 @@ $livros = $consulta->fetchAll();
                                         class="btn btn-sm btn-outline-primary btn-editar"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalEditar"
-                                        data-id="<?= $livro['id'] ?>"
-                                        data-titulo="<?= htmlspecialchars($livro['titulo'], ENT_QUOTES) ?>"
-                                        data-autor="<?= htmlspecialchars($livro['autor'], ENT_QUOTES) ?>"
-                                        data-categoria="<?= htmlspecialchars($livro['categoria'], ENT_QUOTES) ?>"
-                                        data-preco="<?= htmlspecialchars($livro['preco'], ENT_QUOTES) ?>"
-                                        data-disponibilidade="<?= htmlspecialchars($livro['disponibilidade'], ENT_QUOTES) ?>">
+                                        data-id="<?= (int) $livro['id'] ?>"
+                                        data-titulo="<?= bsyncEscapar($livro['titulo']) ?>"
+                                        data-autor="<?= bsyncEscapar($livro['autor']) ?>"
+                                        data-categoria="<?= bsyncEscapar($livro['categoria']) ?>"
+                                        data-preco="<?= bsyncEscapar($livro['preco']) ?>"
+                                        data-disponibilidade="<?= bsyncEscapar($livro['disponibilidade']) ?>">
                                     <i class="bi bi-pencil"></i>
                                     Editar
                                 </button>
 
-                                <form method="POST"
-                                      action="livros.php"
+                                <form method="POST" action="livros.php"
                                       onsubmit="return confirm('Tem certeza de que deseja excluir este livro?');">
 
+                                    <input type="hidden" name="csrf_token" value="<?= bsyncEscapar($tokenCSRF) ?>">
                                     <input type="hidden" name="acao" value="excluir">
-                                    <input type="hidden" name="id" value="<?= $livro['id'] ?>">
+                                    <input type="hidden" name="id" value="<?= (int) $livro['id'] ?>">
 
                                     <button type="submit" class="btn btn-sm btn-outline-danger">
                                         <i class="bi bi-trash"></i>
                                         Excluir
                                     </button>
-
                                 </form>
 
                             </div>
@@ -297,6 +333,10 @@ $livros = $consulta->fetchAll();
                     <?php endforeach; ?>
 
                 </div>
+
+                <p id="nenhumResultado" class="text-center mt-4" hidden>
+                    Nenhum livro encontrado.
+                </p>
 
             <?php endif; ?>
 
@@ -317,35 +357,40 @@ $livros = $consulta->fetchAll();
 
             <form method="POST" action="livros.php">
 
+                <input type="hidden" name="csrf_token" value="<?= bsyncEscapar($tokenCSRF) ?>">
                 <input type="hidden" name="acao" value="cadastrar">
 
                 <div class="modal-body">
 
                     <div class="mb-3">
                         <label class="form-label">Título</label>
-                        <input type="text" name="titulo" class="form-control" required>
+                        <input type="text" name="titulo" class="form-control" maxlength="200" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Autor</label>
-                        <input type="text" name="autor" class="form-control" required>
+                        <input type="text" name="autor" class="form-control" maxlength="150" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Categoria</label>
-                        <select name="categoria" class="form-select" required>
-                            <option value="">Selecione</option>
-                            <option>Literatura</option>
-                            <option>Clássico</option>
-                            <option>Fantasia</option>
-                            <option>Romance</option>
-                            <option>Suspense</option>
-                        </select>
+                        <input type="text" name="categoria" class="form-control" maxlength="100" list="categoriasLivros" placeholder="Digite a categoria" required>
+                        <datalist id="categoriasLivros">
+                            <option value="Literatura">
+                            <option value="Clássico">
+                            <option value="Fantasia">
+                            <option value="Romance">
+                            <option value="Suspense">
+                            <option value="Ficção científica">
+                            <option value="Biografia">
+                            <option value="Infantil">
+                            <option value="História">
+                        </datalist>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Preço</label>
-                        <input type="number" name="preco" class="form-control" step="0.01" min="0" required>
+                        <input type="number" name="preco" class="form-control" step="0.01" min="0" max="99999999.99" required>
                     </div>
 
                     <div>
@@ -362,7 +407,6 @@ $livros = $consulta->fetchAll();
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Cancelar
                     </button>
-
                     <button type="submit" class="btn btn-primary">
                         Cadastrar livro
                     </button>
@@ -386,6 +430,7 @@ $livros = $consulta->fetchAll();
 
             <form method="POST" action="livros.php">
 
+                <input type="hidden" name="csrf_token" value="<?= bsyncEscapar($tokenCSRF) ?>">
                 <input type="hidden" name="acao" value="editar">
                 <input type="hidden" name="id" id="editarId">
 
@@ -393,29 +438,22 @@ $livros = $consulta->fetchAll();
 
                     <div class="mb-3">
                         <label class="form-label">Título</label>
-                        <input type="text" name="titulo" id="editarTitulo" class="form-control" required>
+                        <input type="text" name="titulo" id="editarTitulo" class="form-control" maxlength="200" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Autor</label>
-                        <input type="text" name="autor" id="editarAutor" class="form-control" required>
+                        <input type="text" name="autor" id="editarAutor" class="form-control" maxlength="150" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Categoria</label>
-                        <select name="categoria" id="editarCategoria" class="form-select" required>
-                            <option value="">Selecione</option>
-                            <option>Literatura</option>
-                            <option>Clássico</option>
-                            <option>Fantasia</option>
-                            <option>Romance</option>
-                            <option>Suspense</option>
-                        </select>
+                        <input type="text" name="categoria" id="editarCategoria" class="form-control" maxlength="100" list="categoriasLivros" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Preço</label>
-                        <input type="number" name="preco" id="editarPreco" class="form-control" step="0.01" min="0" required>
+                        <input type="number" name="preco" id="editarPreco" class="form-control" step="0.01" min="0" max="99999999.99" required>
                     </div>
 
                     <div>
@@ -432,7 +470,6 @@ $livros = $consulta->fetchAll();
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Cancelar
                     </button>
-
                     <button type="submit" class="btn btn-primary">
                         Salvar alterações
                     </button>
@@ -460,13 +497,27 @@ document.querySelectorAll('.btn-editar').forEach(botao => {
 });
 
 const busca = document.getElementById('buscaLivros');
+const lista = document.getElementById('listaLivros');
+const nenhumResultado = document.getElementById('nenhumResultado');
 
 busca.addEventListener('input', function () {
-    const termo = this.value.toLowerCase();
+    const termo = this.value.trim().toLocaleLowerCase('pt-BR');
+    let encontrados = 0;
 
-    document.querySelectorAll('#listaLivros .book-item').forEach(livro => {
-        livro.style.display = livro.textContent.toLowerCase().includes(termo) ? '' : 'none';
-    });
+    if (lista) {
+        lista.querySelectorAll('.book-item').forEach(livro => {
+            const corresponde = livro.textContent.toLocaleLowerCase('pt-BR').includes(termo);
+            livro.style.display = corresponde ? '' : 'none';
+
+            if (corresponde) {
+                encontrados++;
+            }
+        });
+    }
+
+    if (nenhumResultado) {
+        nenhumResultado.hidden = encontrados > 0;
+    }
 });
 </script>
 
