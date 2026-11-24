@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // Voltar para o login
-        window.location.href = "login.html";
+        window.location.href = "login.php";
 
     });
 

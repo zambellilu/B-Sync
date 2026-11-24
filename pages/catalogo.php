@@ -1,5 +1,5 @@
-
 <?php
+require_once __DIR__ . '/../includes/protecao.php';
 require_once __DIR__ . '/../includes/conexao.php';
 
 $consulta = $conexao->query(
@@ -93,9 +93,33 @@ foreach ($livros as $livro) {
                         <a class="nav-link" href="../index.html#contato">Contato</a>
                     </li>
 
-                    <li class="nav-item ms-lg-3">
-                        <a href="login.html" class="btn btn-primary">Entrar</a>
-                    </li>
+                    <?php if (!empty($_SESSION['usuario_id'])): ?>
+
+    <?php if ($_SESSION['usuario_tipo'] === 'admin'): ?>
+        <li class="nav-item ms-lg-3">
+            <a href="../admin/dashboard.php" class="btn btn-primary">
+                Meu painel
+            </a>
+        </li>
+    <?php else: ?>
+        <li class="nav-item ms-lg-3">
+            <a href="dashboard.php" class="btn btn-primary">
+                Minha conta
+            </a>
+        </li>
+    <?php endif; ?>
+
+    <li class="nav-item ms-lg-2">
+        <a href="logout.php" class="nav-link">Sair</a>
+    </li>
+
+<?php else: ?>
+
+    <li class="nav-item ms-lg-3">
+        <a href="login.php" class="btn btn-primary">Entrar</a>
+    </li>
+
+<?php endif; ?>
 
                 </ul>
             </div>

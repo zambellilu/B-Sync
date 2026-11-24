@@ -236,7 +236,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <p class="login-link">
                     Já possui uma conta?
-                    <a href="login.html">Faça login</a>
+                    <a href="login.php">Faça login</a>
                 </p>
 
                 <a href="../index.html" class="back-home">

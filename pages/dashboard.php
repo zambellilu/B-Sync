@@ -1,7 +1,30 @@
-
 <?php
 require_once __DIR__ . '/../includes/protecao.php';
 bsyncExigirUsuario();
+
+require_once __DIR__ . '/../includes/conexao.php';
+
+$usuarioId = (int) $_SESSION['usuario_id'];
+$nomeUsuario = htmlspecialchars($_SESSION['usuario_nome'] ?? 'Usuário', ENT_QUOTES, 'UTF-8');
+
+$reservas = 0;
+$pedidos = 0;
+
+try {
+    $consulta = $conexao->prepare(
+        'SELECT COUNT(*) FROM reservas WHERE usuario_id = :usuario_id'
+    );
+    $consulta->execute(['usuario_id' => $usuarioId]);
+    $reservas = (int) $consulta->fetchColumn();
+
+    $consulta = $conexao->prepare(
+        'SELECT COUNT(*) FROM pedidos WHERE usuario_id = :usuario_id'
+    );
+    $consulta->execute(['usuario_id' => $usuarioId]);
+    $pedidos = (int) $consulta->fetchColumn();
+} catch (PDOException $erro) {
+    error_log($erro->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -9,123 +32,89 @@ bsyncExigirUsuario();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>B-Sync | Início</title>
 
-    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/usuario.css">
 </head>
 
 <body class="user-page">
 
-    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg user-navbar">
-
         <div class="container">
 
             <a class="navbar-brand" href="../index.html">
                 <img src="../assets/img/logo.png" alt="B-Sync">
             </a>
 
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#menu">
-
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
-
             </button>
 
             <div class="collapse navbar-collapse" id="menu">
-
                 <ul class="navbar-nav ms-auto align-items-lg-center">
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.php">
-                            Início
-                        </a>
+                        <a class="nav-link active" href="dashboard.php">Início</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="reservas.php">
-                            Reservas
-                        </a>
+                        <a class="nav-link" href="reservas.php">Reservas</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="pedidos.php">
-                            Pedidos
-                        </a>
+                        <a class="nav-link" href="pedidos.php">Pedidos</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="perfil.php">
-                            Perfil
-                        </a>
+                        <a class="nav-link" href="perfil.php">Perfil</a>
                     </li>
 
                     <li class="nav-item ms-lg-3">
-                        <a href="logout.php" class="btn btn-primary">
-                            Sair
-                        </a>
+                        <a href="logout.php" class="btn btn-primary">Sair</a>
                     </li>
 
                 </ul>
-
             </div>
 
         </div>
-
     </nav>
 
-    <!-- CONTEÚDO -->
     <main class="user-content">
-
         <div class="container">
 
-            <!-- TÍTULO -->
             <div class="user-title">
-
                 <span>ÁREA DO USUÁRIO</span>
 
                 <h1>
-                    Olá, seja bem-vindo!
+                    Olá, <?= $nomeUsuario ?>!
                 </h1>
 
                 <p>
                     Acesse rapidamente suas reservas, pedidos e informações pessoais.
                 </p>
-
             </div>
 
-            <!-- RESUMO -->
             <div class="row g-4">
 
-                <!-- RESERVAS -->
                 <div class="col-md-4">
-
                     <div class="user-card">
 
                         <div class="user-icon">
                             <i class="bi bi-bookmark"></i>
                         </div>
 
-                        <h3>
-                            Minhas reservas
-                        </h3>
+                        <h3>Minhas reservas</h3>
 
                         <p>
-                            Consulte os livros que você reservou.
+                            Você possui <?= $reservas ?> <?= $reservas === 1 ? 'reserva cadastrada' : 'reservas cadastradas' ?>.
                         </p>
 
                         <a href="reservas.php" class="user-btn d-inline-block mt-3 text-decoration-none">
@@ -133,24 +122,19 @@ bsyncExigirUsuario();
                         </a>
 
                     </div>
-
                 </div>
 
-                <!-- PEDIDOS -->
                 <div class="col-md-4">
-
                     <div class="user-card">
 
                         <div class="user-icon">
                             <i class="bi bi-bag"></i>
                         </div>
 
-                        <h3>
-                            Meus pedidos
-                        </h3>
+                        <h3>Meus pedidos</h3>
 
                         <p>
-                            Acompanhe seus pedidos e seus status.
+                            Você possui <?= $pedidos ?> <?= $pedidos === 1 ? 'pedido registrado' : 'pedidos registrados' ?>.
                         </p>
 
                         <a href="pedidos.php" class="user-btn d-inline-block mt-3 text-decoration-none">
@@ -158,21 +142,16 @@ bsyncExigirUsuario();
                         </a>
 
                     </div>
-
                 </div>
 
-                <!-- PERFIL -->
                 <div class="col-md-4">
-
                     <div class="user-card">
 
                         <div class="user-icon">
                             <i class="bi bi-person"></i>
                         </div>
 
-                        <h3>
-                            Meu perfil
-                        </h3>
+                        <h3>Meu perfil</h3>
 
                         <p>
                             Consulte e atualize seus dados pessoais.
@@ -183,91 +162,68 @@ bsyncExigirUsuario();
                         </a>
 
                     </div>
-
                 </div>
 
             </div>
 
-            <!-- ACESSO RÁPIDO -->
             <div class="user-title mt-5 mb-4">
-
                 <span>ACESSO RÁPIDO</span>
-
-                <h2>
-                    Encontre o que precisa
-                </h2>
-
+                <h2>Encontre o que precisa</h2>
             </div>
 
             <div class="row g-4">
 
                 <div class="col-md-6">
-
                     <div class="user-card">
 
                         <div class="user-icon">
                             <i class="bi bi-book"></i>
                         </div>
 
-                        <h3>
-                            Explorar catálogo
-                        </h3>
+                        <h3>Explorar catálogo</h3>
 
                         <p>
                             Confira os livros disponíveis na livraria.
                         </p>
 
-                        <a href="catalogo.php"
-                           class="user-btn d-inline-block mt-3 text-decoration-none">
+                        <a href="catalogo.php" class="user-btn d-inline-block mt-3 text-decoration-none">
                             Ver catálogo
                         </a>
 
                     </div>
-
                 </div>
 
                 <div class="col-md-6">
-
                     <div class="user-card">
 
                         <div class="user-icon">
                             <i class="bi bi-house"></i>
                         </div>
 
-                        <h3>
-                            Página inicial
-                        </h3>
+                        <h3>Página inicial</h3>
 
                         <p>
                             Volte para a página principal do B-Sync.
                         </p>
 
-                        <a href="../index.html"
-                           class="user-btn d-inline-block mt-3 text-decoration-none">
+                        <a href="../index.html" class="user-btn d-inline-block mt-3 text-decoration-none">
                             Ir para início
                         </a>
 
                     </div>
-
                 </div>
 
             </div>
 
         </div>
-
     </main>
 
-    <!-- RODAPÉ -->
     <footer class="user-footer">
-
         © 2026 B-Sync • Sistema de Gerenciamento para Livrarias
-
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>
 
